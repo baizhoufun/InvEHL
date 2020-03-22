@@ -19,23 +19,23 @@ int main(int argc, char **argv)
     if (argc > 1)
         confPath = argv[1];
 
-    Mat img = imread(reader.GetString("eikonal", "input", "wtf"));
-    cv::resize(img, img, cv::Size(200, 200), 0.5, 0.5);
-    invEHL::image::Eikonal ls(img, reader.GetBoolean("eikonal", "flip", 0));
+    Mat img = imread(reader.GetString("eikonal", "input"));
+    cv::resize(img, img, cv::Size(121, 121), 0.5, 0.5);
+    invEHL::image::Eikonal ls(img, reader.GetBoolean("eikonal", "flip"));
 
-    ls.evolution(reader.GetInteger("eikonal", "iterLS", -1),
-                 reader.GetReal("eikonal", "dtLS", -1),
-                 reader.GetReal("eikonal", "c1", -1),
-                 reader.GetReal("eikonal", "c2", -1));
+    ls.evolution(reader.GetInteger("eikonal", "iterLS"),
+                 reader.GetReal("eikonal", "dtLS"),
+                 reader.GetReal("eikonal", "c1"),
+                 reader.GetReal("eikonal", "c2"));
     ls.rescaleMinMax(0, 255);
-    cv::imwrite(reader.GetString("eikonal", "outputLS", "wtf"), ls.phi);
+    cv::imwrite(reader.GetString("eikonal", "outputLS"), ls.phi);
 
     GaussianBlur(ls.phiInit(), ls.phi,
-                 cv::Size(reader.GetInteger("eikonal", "kGF", -1), reader.GetInteger("eikonal", "kGF", -1)),
-                 reader.GetReal("eikonal", "sigmaGF", -1));
+                 cv::Size(reader.GetInteger("eikonal", "kGF"), reader.GetInteger("eikonal", "kGF")),
+                 reader.GetReal("eikonal", "sigmaGF"));
 
     ls.rescaleMinMax(0, 255);
-    cv::imwrite(reader.GetString("eikonal", "outputGF", "wtf"), ls.phi);
+    cv::imwrite(reader.GetString("eikonal", "outputGF"), ls.phi);
 
     //std::cout << "test Int: " << reader.GetInteger("PDE", "nx", -1) << std::endl;
     //std::cout << "test real: " << reader.GetReal("PDE", "dt", -1) << std::endl;

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../iniReader/iniReader.hpp"
+#include "../io/iniReader.hpp"
 
 int main(int argc, char **argv)
 {

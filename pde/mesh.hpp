@@ -14,8 +14,8 @@ class Mesh
 		double lx = 1, ly = 1;			// domain size x and y
 		double joc = 1, jx = 1, jy = 1; //coordiante jacobian or seperately in x and y direction
 		int nx = 1, ny = 1, dof = 1;	// number of elements in x and y and total nodal degree of freedom
-		double dt = 0.01;				// time increment
-		int tStep = 10;					// time step
+										//double dt = 0.01;				// time increment
+										//int tStep = 10;					// time step
 	};
 
 public:
@@ -35,11 +35,12 @@ public:
 		info.ly = ly_;
 		info.nx = nx_;
 		info.ny = ny_;
-		info.dt = dt_;
-		info.tStep = tStep_;
+		//info.dt = dt_;
+		//info.tStep = tStep_;
 	}
 	void initNode();
 	void initElement();
+
 	static double oneMassOne() { return oneMassOne_; } // one vector dot mass matrix dot one vector = total area of mesh
 public:
 	void assembleMass();
@@ -51,7 +52,7 @@ public:
 		Eigen::SparseMatrix<double> &W, const Eigen::VectorXd &H3,
 		Eigen::SparseMatrix<double> &dW, const Eigen::VectorXd &dH3dH, const Eigen::VectorXd &P);
 	// write mesh to a path
-	void outputMesh(const std::string &path) const;
+	void outputMesh(const std::string &elementPath, const std::string &nodePath) const;
 	// ehd function : evaluate function fp which depends on function f and function h, e.g. Pi = 1/ (1+f-h)
 	static Eigen::VectorXd ehd(double (*fp)(double x, double y), const Eigen::VectorXd &h, const Eigen::VectorXd &f);
 	// ehd function : evaluate function fp which only depends function h, e.g. mobility h^3

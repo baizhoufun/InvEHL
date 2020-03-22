@@ -1,8 +1,15 @@
-#include "mesh.h"
 #include <fstream>
 #include <string>
 #include <stdio.h>
+
+#include "mesh.hpp"
+
 #define NUM_THREADS 4 // default number of threads for personal laptops
+
+#if defined __linux__
+#undef NUM_THREADS
+#define NUM_THREADS 10 // if on a linux server, use 10 threads instead
+#endif
 
 #if defined __CYGWIN__ || defined __linux__
 int fopen_s(FILE **f, const char *name, const char *mode)
@@ -14,11 +21,6 @@ int fopen_s(FILE **f, const char *name, const char *mode)
 		ret = errno;
 	return ret;
 }
-#endif
-
-#if defined __linux__
-#undef NUM_THREADS
-#define NUM_THREADS 10 // if on a linux server, use 10 threads instead
 #endif
 
 namespace invEHL
@@ -289,10 +291,9 @@ void Mesh::assembleWeightedStiff(
 // 1. Ouput quad Q9 elements to a file = "path"/element.txt
 // 2. Ouput quad Q9 nodal points to a file = "path"/node.txt
 //    where node.txt : col 1 = X coordinate, col 2 = Y coordiante
-void Mesh::outputMesh(const std::string &path) const
+void Mesh::outputMesh(const std::string &elementPath, const std::string &nodePath) const
 {
-
-	std::string fileName = path + "/" + "element.txt";
+	std::string fileName = elementPath;
 	//const char *fileName = str.c_str();
 	//FILE * file = fopen("./output/element.txt", "w");
 	int err;
@@ -313,7 +314,7 @@ void Mesh::outputMesh(const std::string &path) const
 	{
 		err = fclose(file);
 	}
-	fileName = path + "/" + "node.txt";
+	fileName = nodePath;
 
 	err = fopen_s(&file, fileName.c_str(), "w+");
 	for (auto &value : node)

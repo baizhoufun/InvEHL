@@ -1,5 +1,5 @@
-#ifndef PARSER_H
-#define PARSER_H
+#ifndef INIREADER_H
+#define INIREADER_H
 
 #include <map>
 #include <string>
@@ -8,7 +8,6 @@ namespace invEHL
 {
 namespace io
 {
-
 class INIReader
 {
 public:
@@ -31,21 +30,21 @@ public:
     // Get a string value from INI file, returning default_value if not found,
     // empty, or contains only whitespace.
     std::string GetString(const std::string &section, const std::string &name,
-                          const std::string &default_value) const;
+                          const std::string &default_value = "N/A") const;
 
     // Get an integer (long) value from INI file, returning default_value if
     // not found or not a valid integer (decimal "1234", "-1234", or hex "0x4d2").
-    long GetInteger(const std::string &section, const std::string &name, long default_value) const;
+    long GetInteger(const std::string &section, const std::string &name, long default_valu = -1) const;
 
     // Get a real (floating point double) value from INI file, returning
     // default_value if not found or not a valid floating point value
     // according to strtod().
-    double GetReal(const std::string &section, const std::string &name, double default_value) const;
+    double GetReal(const std::string &section, const std::string &name, double default_value = -1) const;
 
     // Get a boolean value from INI file, returning default_value if not found or if
     // not a valid true/false value. Valid true values are "true", "yes", "on", "1",
     // and valid false values are "false", "no", "off", "0" (not case sensitive).
-    bool GetBoolean(const std::string &section, const std::string &name, bool default_value) const;
+    bool GetBoolean(const std::string &section, const std::string &name, bool default_value = false) const;
 
     // Return true if the given section exists (section must contain at least
     // one name=value pair).
