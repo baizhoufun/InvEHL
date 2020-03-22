@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/czhou/Projects/InvEHL/eikonal/eikonal.cpp
+iostream
+-
+opencv2/opencv.hpp
+-
+eikonal.hpp
+/home/czhou/Projects/InvEHL/eikonal/eikonal.hpp
+
+/home/czhou/Projects/InvEHL/eikonal/eikonal.hpp
+vector
+-
+opencv2/opencv.hpp
+-
+
