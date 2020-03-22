@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/czhou/Projects/InvEHL/io/ini.c
+stdio.h
+-
+ctype.h
+-
+string.h
+-
+ini.h
+/home/czhou/Projects/InvEHL/io/ini.h
+stdlib.h
+-
+
+/home/czhou/Projects/InvEHL/io/ini.h
+stdio.h
+-
+

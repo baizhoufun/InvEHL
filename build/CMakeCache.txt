@@ -199,8 +199,17 @@ iniReaderLib1_LIB_DEPENDS:STATIC=
 //Dependencies for target
 iniReaderLib2_LIB_DEPENDS:STATIC=
 
+//Dependencies for target
+iniReaderLib_LIB_DEPENDS:STATIC=
+
 //abc
 iniReader_test:BOOL=OFF
+
+//Dependencies for target
+ioLib_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+pdeLib1_LIB_DEPENDS:STATIC=
 
 //abc
 pde_test:BOOL=ON

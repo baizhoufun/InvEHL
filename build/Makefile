@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named eikonalLib
-
-# Build rule for target.
-eikonalLib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 eikonalLib
-.PHONY : eikonalLib
-
-# fast build rule for target.
-eikonalLib/fast:
-	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/build
-.PHONY : eikonalLib/fast
-
-#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -137,30 +124,43 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
-# Target rules for targets named iniReaderLib1
+# Target rules for targets named pdeLib1
 
 # Build rule for target.
-iniReaderLib1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 iniReaderLib1
-.PHONY : iniReaderLib1
+pdeLib1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pdeLib1
+.PHONY : pdeLib1
 
 # fast build rule for target.
-iniReaderLib1/fast:
-	$(MAKE) -f CMakeFiles/iniReaderLib1.dir/build.make CMakeFiles/iniReaderLib1.dir/build
-.PHONY : iniReaderLib1/fast
+pdeLib1/fast:
+	$(MAKE) -f CMakeFiles/pdeLib1.dir/build.make CMakeFiles/pdeLib1.dir/build
+.PHONY : pdeLib1/fast
 
 #=============================================================================
-# Target rules for targets named iniReaderLib2
+# Target rules for targets named ioLib
 
 # Build rule for target.
-iniReaderLib2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 iniReaderLib2
-.PHONY : iniReaderLib2
+ioLib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ioLib
+.PHONY : ioLib
 
 # fast build rule for target.
-iniReaderLib2/fast:
-	$(MAKE) -f CMakeFiles/iniReaderLib2.dir/build.make CMakeFiles/iniReaderLib2.dir/build
-.PHONY : iniReaderLib2/fast
+ioLib/fast:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/build
+.PHONY : ioLib/fast
+
+#=============================================================================
+# Target rules for targets named eikonalLib
+
+# Build rule for target.
+eikonalLib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 eikonalLib
+.PHONY : eikonalLib
+
+# fast build rule for target.
+eikonalLib/fast:
+	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/build
+.PHONY : eikonalLib/fast
 
 eikonal/eikonal.o: eikonal/eikonal.cpp.o
 
@@ -189,59 +189,113 @@ eikonal/eikonal.cpp.s:
 	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.s
 .PHONY : eikonal/eikonal.cpp.s
 
-iniReader/ini.o: iniReader/ini.c.o
+io/ini.o: io/ini.c.o
 
-.PHONY : iniReader/ini.o
-
-# target to build an object file
-iniReader/ini.c.o:
-	$(MAKE) -f CMakeFiles/iniReaderLib2.dir/build.make CMakeFiles/iniReaderLib2.dir/iniReader/ini.c.o
-.PHONY : iniReader/ini.c.o
-
-iniReader/ini.i: iniReader/ini.c.i
-
-.PHONY : iniReader/ini.i
-
-# target to preprocess a source file
-iniReader/ini.c.i:
-	$(MAKE) -f CMakeFiles/iniReaderLib2.dir/build.make CMakeFiles/iniReaderLib2.dir/iniReader/ini.c.i
-.PHONY : iniReader/ini.c.i
-
-iniReader/ini.s: iniReader/ini.c.s
-
-.PHONY : iniReader/ini.s
-
-# target to generate assembly for a file
-iniReader/ini.c.s:
-	$(MAKE) -f CMakeFiles/iniReaderLib2.dir/build.make CMakeFiles/iniReaderLib2.dir/iniReader/ini.c.s
-.PHONY : iniReader/ini.c.s
-
-iniReader/iniReader.o: iniReader/iniReader.cpp.o
-
-.PHONY : iniReader/iniReader.o
+.PHONY : io/ini.o
 
 # target to build an object file
-iniReader/iniReader.cpp.o:
-	$(MAKE) -f CMakeFiles/iniReaderLib1.dir/build.make CMakeFiles/iniReaderLib1.dir/iniReader/iniReader.cpp.o
-.PHONY : iniReader/iniReader.cpp.o
+io/ini.c.o:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ini.c.o
+.PHONY : io/ini.c.o
 
-iniReader/iniReader.i: iniReader/iniReader.cpp.i
+io/ini.i: io/ini.c.i
 
-.PHONY : iniReader/iniReader.i
+.PHONY : io/ini.i
 
 # target to preprocess a source file
-iniReader/iniReader.cpp.i:
-	$(MAKE) -f CMakeFiles/iniReaderLib1.dir/build.make CMakeFiles/iniReaderLib1.dir/iniReader/iniReader.cpp.i
-.PHONY : iniReader/iniReader.cpp.i
+io/ini.c.i:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ini.c.i
+.PHONY : io/ini.c.i
 
-iniReader/iniReader.s: iniReader/iniReader.cpp.s
+io/ini.s: io/ini.c.s
 
-.PHONY : iniReader/iniReader.s
+.PHONY : io/ini.s
 
 # target to generate assembly for a file
-iniReader/iniReader.cpp.s:
-	$(MAKE) -f CMakeFiles/iniReaderLib1.dir/build.make CMakeFiles/iniReaderLib1.dir/iniReader/iniReader.cpp.s
-.PHONY : iniReader/iniReader.cpp.s
+io/ini.c.s:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ini.c.s
+.PHONY : io/ini.c.s
+
+io/iniReader.o: io/iniReader.cpp.o
+
+.PHONY : io/iniReader.o
+
+# target to build an object file
+io/iniReader.cpp.o:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/iniReader.cpp.o
+.PHONY : io/iniReader.cpp.o
+
+io/iniReader.i: io/iniReader.cpp.i
+
+.PHONY : io/iniReader.i
+
+# target to preprocess a source file
+io/iniReader.cpp.i:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/iniReader.cpp.i
+.PHONY : io/iniReader.cpp.i
+
+io/iniReader.s: io/iniReader.cpp.s
+
+.PHONY : io/iniReader.s
+
+# target to generate assembly for a file
+io/iniReader.cpp.s:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/iniReader.cpp.s
+.PHONY : io/iniReader.cpp.s
+
+io/writeEigen.o: io/writeEigen.cpp.o
+
+.PHONY : io/writeEigen.o
+
+# target to build an object file
+io/writeEigen.cpp.o:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/writeEigen.cpp.o
+.PHONY : io/writeEigen.cpp.o
+
+io/writeEigen.i: io/writeEigen.cpp.i
+
+.PHONY : io/writeEigen.i
+
+# target to preprocess a source file
+io/writeEigen.cpp.i:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/writeEigen.cpp.i
+.PHONY : io/writeEigen.cpp.i
+
+io/writeEigen.s: io/writeEigen.cpp.s
+
+.PHONY : io/writeEigen.s
+
+# target to generate assembly for a file
+io/writeEigen.cpp.s:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/writeEigen.cpp.s
+.PHONY : io/writeEigen.cpp.s
+
+pde/mesh.o: pde/mesh.cpp.o
+
+.PHONY : pde/mesh.o
+
+# target to build an object file
+pde/mesh.cpp.o:
+	$(MAKE) -f CMakeFiles/pdeLib1.dir/build.make CMakeFiles/pdeLib1.dir/pde/mesh.cpp.o
+.PHONY : pde/mesh.cpp.o
+
+pde/mesh.i: pde/mesh.cpp.i
+
+.PHONY : pde/mesh.i
+
+# target to preprocess a source file
+pde/mesh.cpp.i:
+	$(MAKE) -f CMakeFiles/pdeLib1.dir/build.make CMakeFiles/pdeLib1.dir/pde/mesh.cpp.i
+.PHONY : pde/mesh.cpp.i
+
+pde/mesh.s: pde/mesh.cpp.s
+
+.PHONY : pde/mesh.s
+
+# target to generate assembly for a file
+pde/mesh.cpp.s:
+	$(MAKE) -f CMakeFiles/pdeLib1.dir/build.make CMakeFiles/pdeLib1.dir/pde/mesh.cpp.s
+.PHONY : pde/mesh.cpp.s
 
 test/pde_test.o: test/pde_test.cpp.o
 
@@ -277,20 +331,26 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... eikonalLib"
 	@echo "... edit_cache"
 	@echo "... main"
-	@echo "... iniReaderLib1"
-	@echo "... iniReaderLib2"
+	@echo "... pdeLib1"
+	@echo "... ioLib"
+	@echo "... eikonalLib"
 	@echo "... eikonal/eikonal.o"
 	@echo "... eikonal/eikonal.i"
 	@echo "... eikonal/eikonal.s"
-	@echo "... iniReader/ini.o"
-	@echo "... iniReader/ini.i"
-	@echo "... iniReader/ini.s"
-	@echo "... iniReader/iniReader.o"
-	@echo "... iniReader/iniReader.i"
-	@echo "... iniReader/iniReader.s"
+	@echo "... io/ini.o"
+	@echo "... io/ini.i"
+	@echo "... io/ini.s"
+	@echo "... io/iniReader.o"
+	@echo "... io/iniReader.i"
+	@echo "... io/iniReader.s"
+	@echo "... io/writeEigen.o"
+	@echo "... io/writeEigen.i"
+	@echo "... io/writeEigen.s"
+	@echo "... pde/mesh.o"
+	@echo "... pde/mesh.i"
+	@echo "... pde/mesh.s"
 	@echo "... test/pde_test.o"
 	@echo "... test/pde_test.i"
 	@echo "... test/pde_test.s"

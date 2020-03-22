@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/czhou/Projects/InvEHL/io/ini.h
+stdio.h
+-
+
+/home/czhou/Projects/InvEHL/io/iniReader.cpp
+algorithm
+-
+cctype
+-
+cstdlib
+-
+iniReader.hpp
+/home/czhou/Projects/InvEHL/io/iniReader.hpp
+ini.h
+/home/czhou/Projects/InvEHL/io/ini.h
+
+/home/czhou/Projects/InvEHL/io/iniReader.hpp
+map
+-
+string
+-
+

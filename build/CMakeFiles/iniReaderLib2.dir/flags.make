@@ -6,5 +6,5 @@ C_FLAGS =   -std=c++11 -O3
 
 C_DEFINES = 
 
-C_INCLUDES = -I/usr/include/eigen3 
+C_INCLUDES = -I/usr/include/eigen3 -I/home/czhou/Projects/InvEHL/pde 
 

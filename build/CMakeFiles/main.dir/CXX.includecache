@@ -12,10 +12,22 @@ vector
 opencv2/opencv.hpp
 -
 
-/home/czhou/Projects/InvEHL/iniReader/iniReader.hpp
+/home/czhou/Projects/InvEHL/io/iniReader.hpp
 map
 -
 string
+-
+
+/home/czhou/Projects/InvEHL/io/writeEigen.hpp
+eigen3/Eigen/Core
+-
+string
+-
+
+/home/czhou/Projects/InvEHL/pde/mesh.hpp
+vector
+-
+eigen3/Eigen/Sparse
 -
 
 /home/czhou/Projects/InvEHL/test/pde_test.cpp
@@ -25,8 +37,12 @@ eigen3/Eigen/Core
 -
 ../eikonal/eikonal.hpp
 /home/czhou/Projects/InvEHL/eikonal/eikonal.hpp
-../iniReader/iniReader.hpp
-/home/czhou/Projects/InvEHL/iniReader/iniReader.hpp
+../io/iniReader.hpp
+/home/czhou/Projects/InvEHL/io/iniReader.hpp
+../io/writeEigen.hpp
+/home/czhou/Projects/InvEHL/io/writeEigen.hpp
+../pde/mesh.hpp
+/home/czhou/Projects/InvEHL/pde/mesh.hpp
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h

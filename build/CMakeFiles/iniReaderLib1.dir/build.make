@@ -81,17 +81,43 @@ CMakeFiles/iniReaderLib1.dir/iniReader/iniReader.cpp.o.provides: CMakeFiles/iniR
 CMakeFiles/iniReaderLib1.dir/iniReader/iniReader.cpp.o.provides.build: CMakeFiles/iniReaderLib1.dir/iniReader/iniReader.cpp.o
 
 
+CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o: CMakeFiles/iniReaderLib1.dir/flags.make
+CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o: ../iniReader/ini.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o   -c /home/czhou/Projects/InvEHL/iniReader/ini.c
+
+CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/czhou/Projects/InvEHL/iniReader/ini.c > CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.i
+
+CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/czhou/Projects/InvEHL/iniReader/ini.c -o CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.s
+
+CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o.requires:
+
+.PHONY : CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o.requires
+
+CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o.provides: CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o.requires
+	$(MAKE) -f CMakeFiles/iniReaderLib1.dir/build.make CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o.provides.build
+.PHONY : CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o.provides
+
+CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o.provides.build: CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o
+
+
 # Object files for target iniReaderLib1
 iniReaderLib1_OBJECTS = \
-"CMakeFiles/iniReaderLib1.dir/iniReader/iniReader.cpp.o"
+"CMakeFiles/iniReaderLib1.dir/iniReader/iniReader.cpp.o" \
+"CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o"
 
 # External object files for target iniReaderLib1
 iniReaderLib1_EXTERNAL_OBJECTS =
 
 libiniReaderLib1.a: CMakeFiles/iniReaderLib1.dir/iniReader/iniReader.cpp.o
+libiniReaderLib1.a: CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o
 libiniReaderLib1.a: CMakeFiles/iniReaderLib1.dir/build.make
 libiniReaderLib1.a: CMakeFiles/iniReaderLib1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libiniReaderLib1.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libiniReaderLib1.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/iniReaderLib1.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/iniReaderLib1.dir/link.txt --verbose=$(VERBOSE)
 
@@ -101,6 +127,7 @@ CMakeFiles/iniReaderLib1.dir/build: libiniReaderLib1.a
 .PHONY : CMakeFiles/iniReaderLib1.dir/build
 
 CMakeFiles/iniReaderLib1.dir/requires: CMakeFiles/iniReaderLib1.dir/iniReader/iniReader.cpp.o.requires
+CMakeFiles/iniReaderLib1.dir/requires: CMakeFiles/iniReaderLib1.dir/iniReader/ini.c.o.requires
 
 .PHONY : CMakeFiles/iniReaderLib1.dir/requires
 

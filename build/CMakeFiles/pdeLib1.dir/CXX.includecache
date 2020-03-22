@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/czhou/Projects/InvEHL/pde/mesh.cpp
+fstream
+-
+string
+-
+stdio.h
+-
+mesh.hpp
+/home/czhou/Projects/InvEHL/pde/mesh.hpp
+
+/home/czhou/Projects/InvEHL/pde/mesh.hpp
+vector
+-
+eigen3/Eigen/Sparse
+-
+
