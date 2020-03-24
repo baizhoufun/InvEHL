@@ -1,2 +1,2 @@
-/usr/bin/ar qc libioLib.a  CMakeFiles/ioLib.dir/io/iniReader.cpp.o CMakeFiles/ioLib.dir/io/ini.c.o CMakeFiles/ioLib.dir/io/writeEigen.cpp.o
+/usr/bin/ar qc libioLib.a  CMakeFiles/ioLib.dir/io/iniReader.cpp.o CMakeFiles/ioLib.dir/io/ini.c.o CMakeFiles/ioLib.dir/io/ioEigen.cpp.o
 /usr/bin/ranlib libioLib.a

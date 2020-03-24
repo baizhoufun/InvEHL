@@ -60,15 +60,15 @@ include CMakeFiles/pdeLib1.dir/flags.make
 CMakeFiles/pdeLib1.dir/pde/mesh.cpp.o: CMakeFiles/pdeLib1.dir/flags.make
 CMakeFiles/pdeLib1.dir/pde/mesh.cpp.o: ../pde/mesh.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/pdeLib1.dir/pde/mesh.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pdeLib1.dir/pde/mesh.cpp.o -c /home/czhou/Projects/InvEHL/pde/mesh.cpp
+	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pdeLib1.dir/pde/mesh.cpp.o -c /home/czhou/Projects/InvEHL/pde/mesh.cpp
 
 CMakeFiles/pdeLib1.dir/pde/mesh.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pdeLib1.dir/pde/mesh.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/pde/mesh.cpp > CMakeFiles/pdeLib1.dir/pde/mesh.cpp.i
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/pde/mesh.cpp > CMakeFiles/pdeLib1.dir/pde/mesh.cpp.i
 
 CMakeFiles/pdeLib1.dir/pde/mesh.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pdeLib1.dir/pde/mesh.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/pde/mesh.cpp -o CMakeFiles/pdeLib1.dir/pde/mesh.cpp.s
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/pde/mesh.cpp -o CMakeFiles/pdeLib1.dir/pde/mesh.cpp.s
 
 CMakeFiles/pdeLib1.dir/pde/mesh.cpp.o.requires:
 

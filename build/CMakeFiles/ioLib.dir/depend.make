@@ -8,6 +8,6 @@ CMakeFiles/ioLib.dir/io/iniReader.cpp.o: ../io/ini.h
 CMakeFiles/ioLib.dir/io/iniReader.cpp.o: ../io/iniReader.cpp
 CMakeFiles/ioLib.dir/io/iniReader.cpp.o: ../io/iniReader.hpp
 
-CMakeFiles/ioLib.dir/io/writeEigen.cpp.o: ../io/writeEigen.cpp
-CMakeFiles/ioLib.dir/io/writeEigen.cpp.o: ../io/writeEigen.hpp
+CMakeFiles/ioLib.dir/io/ioEigen.cpp.o: ../io/ioEigen.cpp
+CMakeFiles/ioLib.dir/io/ioEigen.cpp.o: ../io/ioEigen.hpp
 

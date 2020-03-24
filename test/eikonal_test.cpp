@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "../eikonal/eikonal.hpp"
-#include "../iniReader/iniReader.hpp"
+#include "../io/iniReader.hpp"
 
 using namespace cv;
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
         confPath = argv[1];
 
     Mat img = imread(reader.GetString("eikonal", "input"));
-    cv::resize(img, img, cv::Size(121, 121), 0.5, 0.5);
+    cv::resize(img, img, cv::Size(121, 151), 0.5, 0.5);
     invEHL::image::Eikonal ls(img, reader.GetBoolean("eikonal", "flip"));
 
     ls.evolution(reader.GetInteger("eikonal", "iterLS"),

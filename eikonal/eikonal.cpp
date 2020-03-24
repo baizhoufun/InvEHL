@@ -18,7 +18,6 @@ Eikonal::Eikonal(cv::Mat inputImg, bool FLIP)
 {
     rec_ = cv::Rect(0, 0, inputImg.rows, inputImg.cols);
     flip = FLIP;
-
     initializePhi(inputImg, rec_);
 }
 
@@ -43,16 +42,14 @@ void Eikonal::initializePhi(cv::Mat inputImg, cv::Rect inputPhi)
         phiIn = 1.0f;
         phiOut = 0.0f;
     }
-    //m_mDirac = Mat::zeros(m_iRow, m_iCol, m_depth);
-    //m_mHeaviside = Mat::zeros(m_iRow, m_iCol, m_depth);
 
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < col; j++)
         {
-            if (i < inputPhi.y || i > inputPhi.y + inputPhi.height || j < inputPhi.x || j > inputPhi.x + inputPhi.width)
+            if (j < inputPhi.y || j > inputPhi.y + inputPhi.height || i < inputPhi.x || i > inputPhi.x + inputPhi.width)
             {
-                phiInit_.at<float>(i, j) = 0.0;
+                phiInit_.at<float>(i, j) = 0;
             }
             else
             {
@@ -68,6 +65,7 @@ void Eikonal::initializePhi(cv::Mat inputImg, cv::Rect inputPhi)
             }
         }
     }
+    phi = phiInit_.clone();
 }
 
 void Eikonal::evolution(int iterNum, float dt, float c1, float c2)
@@ -77,6 +75,7 @@ void Eikonal::evolution(int iterNum, float dt, float c1, float c2)
 
     for (int a = 0; a < iterNum; a++)
     {
+
         Sobel(phi, grad_y, dep, 0, 1, 3);
         Sobel(phi, grad_x, dep, 1, 0, 3);
         Laplacian(phi, lap_xy, dep, 1);
@@ -86,7 +85,7 @@ void Eikonal::evolution(int iterNum, float dt, float c1, float c2)
         {
             for (int j = 0; j < col; j++)
             {
-                if (i < rec_.y || i > rec_.y + rec_.height || j < rec_.x || j > rec_.x + rec_.width)
+                if (j < rec_.y || j > rec_.y + rec_.height || i < rec_.x || i > rec_.x + rec_.width)
                 {
                     phi.at<float>(i, j) = 0.0;
                 }
@@ -101,7 +100,7 @@ void Eikonal::evolution(int iterNum, float dt, float c1, float c2)
                 }
             }
         }
-        }
+    }
     //rescaleMinMax(0.0, 255.0);
     //GaussianBlur(img, phi, cv::Size(13, 13), 5);
 }

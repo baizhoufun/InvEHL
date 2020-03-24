@@ -3,7 +3,7 @@
 
 CMakeFiles/main.dir/test/pde_test.cpp.o: ../eikonal/eikonal.hpp
 CMakeFiles/main.dir/test/pde_test.cpp.o: ../io/iniReader.hpp
-CMakeFiles/main.dir/test/pde_test.cpp.o: ../io/writeEigen.hpp
+CMakeFiles/main.dir/test/pde_test.cpp.o: ../io/ioEigen.hpp
 CMakeFiles/main.dir/test/pde_test.cpp.o: ../pde/mesh.hpp
 CMakeFiles/main.dir/test/pde_test.cpp.o: ../test/pde_test.cpp
 CMakeFiles/main.dir/test/pde_test.cpp.o: /usr/local/include/opencv/cxcore.h

@@ -60,15 +60,15 @@ include CMakeFiles/eikonalLib.dir/flags.make
 CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o: CMakeFiles/eikonalLib.dir/flags.make
 CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o: ../eikonal/eikonal.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o -c /home/czhou/Projects/InvEHL/eikonal/eikonal.cpp
+	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o -c /home/czhou/Projects/InvEHL/eikonal/eikonal.cpp
 
 CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/eikonal/eikonal.cpp > CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.i
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/eikonal/eikonal.cpp > CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.i
 
 CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/eikonal/eikonal.cpp -o CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.s
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/eikonal/eikonal.cpp -o CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.s
 
 CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o.requires:
 

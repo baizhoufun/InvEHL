@@ -243,32 +243,32 @@ io/iniReader.cpp.s:
 	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/iniReader.cpp.s
 .PHONY : io/iniReader.cpp.s
 
-io/writeEigen.o: io/writeEigen.cpp.o
+io/ioEigen.o: io/ioEigen.cpp.o
 
-.PHONY : io/writeEigen.o
+.PHONY : io/ioEigen.o
 
 # target to build an object file
-io/writeEigen.cpp.o:
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/writeEigen.cpp.o
-.PHONY : io/writeEigen.cpp.o
+io/ioEigen.cpp.o:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ioEigen.cpp.o
+.PHONY : io/ioEigen.cpp.o
 
-io/writeEigen.i: io/writeEigen.cpp.i
+io/ioEigen.i: io/ioEigen.cpp.i
 
-.PHONY : io/writeEigen.i
+.PHONY : io/ioEigen.i
 
 # target to preprocess a source file
-io/writeEigen.cpp.i:
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/writeEigen.cpp.i
-.PHONY : io/writeEigen.cpp.i
+io/ioEigen.cpp.i:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ioEigen.cpp.i
+.PHONY : io/ioEigen.cpp.i
 
-io/writeEigen.s: io/writeEigen.cpp.s
+io/ioEigen.s: io/ioEigen.cpp.s
 
-.PHONY : io/writeEigen.s
+.PHONY : io/ioEigen.s
 
 # target to generate assembly for a file
-io/writeEigen.cpp.s:
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/writeEigen.cpp.s
-.PHONY : io/writeEigen.cpp.s
+io/ioEigen.cpp.s:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ioEigen.cpp.s
+.PHONY : io/ioEigen.cpp.s
 
 pde/mesh.o: pde/mesh.cpp.o
 
@@ -345,9 +345,9 @@ help:
 	@echo "... io/iniReader.o"
 	@echo "... io/iniReader.i"
 	@echo "... io/iniReader.s"
-	@echo "... io/writeEigen.o"
-	@echo "... io/writeEigen.i"
-	@echo "... io/writeEigen.s"
+	@echo "... io/ioEigen.o"
+	@echo "... io/ioEigen.i"
+	@echo "... io/ioEigen.s"
 	@echo "... pde/mesh.o"
 	@echo "... pde/mesh.i"
 	@echo "... pde/mesh.s"

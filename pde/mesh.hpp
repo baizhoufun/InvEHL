@@ -9,27 +9,24 @@ namespace pde
 {
 class Mesh
 {
+public:
 	struct properties
 	{
 		double lx = 1, ly = 1;			// domain size x and y
 		double joc = 1, jx = 1, jy = 1; //coordiante jacobian or seperately in x and y direction
 		int nx = 1, ny = 1, dof = 1;	// number of elements in x and y and total nodal degree of freedom
-										//double dt = 0.01;				// time increment
-										//int tStep = 10;					// time step
-	};
+	} info;
 
-public:
-	properties info;
 	std::vector<std::vector<double>> node;			  // index container of nodal points
 	std::vector<std::vector<int>> element;			  // index container of elements
 	Eigen::SparseMatrix<double> consistentMassMatrix; // not-lumped mass matrix
-	Eigen::SparseMatrix<double> lumpedMassMatrix;	 // lumped mass matrix
-	Eigen::SparseMatrix<double> inverseMassMatrix;	// inverse of mass matrix
+	Eigen::SparseMatrix<double> lumpedMassMatrix;	  // lumped mass matrix
+	Eigen::SparseMatrix<double> inverseMassMatrix;	  // inverse of mass matrix
 	Eigen::SparseMatrix<double> stiffnessMatrix;	  // stiffness matrix
 	Eigen::SparseMatrix<double> lumpedLaplaceMatrix;  // laplacian with lumped mass matrix
 
 	Mesh(){};
-	Mesh(double lx_, double ly_, int nx_, int ny_, double dt_, int tStep_)
+	Mesh(double lx_, double ly_, int nx_, int ny_)
 	{
 		info.lx = lx_;
 		info.ly = ly_;

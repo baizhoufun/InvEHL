@@ -4,7 +4,7 @@
 CMakeFiles/main.dir/test/pde_test.cpp.o
  /home/czhou/Projects/InvEHL/eikonal/eikonal.hpp
  /home/czhou/Projects/InvEHL/io/iniReader.hpp
- /home/czhou/Projects/InvEHL/io/writeEigen.hpp
+ /home/czhou/Projects/InvEHL/io/ioEigen.hpp
  /home/czhou/Projects/InvEHL/pde/mesh.hpp
  /home/czhou/Projects/InvEHL/test/pde_test.cpp
  /usr/local/include/opencv/cxcore.h

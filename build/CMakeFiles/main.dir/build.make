@@ -60,15 +60,15 @@ include CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/test/pde_test.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/test/pde_test.cpp.o: ../test/pde_test.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/test/pde_test.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/test/pde_test.cpp.o -c /home/czhou/Projects/InvEHL/test/pde_test.cpp
+	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/test/pde_test.cpp.o -c /home/czhou/Projects/InvEHL/test/pde_test.cpp
 
 CMakeFiles/main.dir/test/pde_test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/test/pde_test.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/test/pde_test.cpp > CMakeFiles/main.dir/test/pde_test.cpp.i
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/test/pde_test.cpp > CMakeFiles/main.dir/test/pde_test.cpp.i
 
 CMakeFiles/main.dir/test/pde_test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/test/pde_test.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/test/pde_test.cpp -o CMakeFiles/main.dir/test/pde_test.cpp.s
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/test/pde_test.cpp -o CMakeFiles/main.dir/test/pde_test.cpp.s
 
 CMakeFiles/main.dir/test/pde_test.cpp.o.requires:
 
