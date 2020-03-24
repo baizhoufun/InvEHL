@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/czhou/Projects/InvEHL/eikonal/eikonal.cpp
+/home/czhou/Projects/InvEHL/src/eikonal/eikonal.cpp
 iostream
 -
 opencv2/opencv.hpp
 -
 eikonal.hpp
-/home/czhou/Projects/InvEHL/eikonal/eikonal.hpp
+/home/czhou/Projects/InvEHL/src/eikonal/eikonal.hpp
 
-/home/czhou/Projects/InvEHL/eikonal/eikonal.hpp
+/home/czhou/Projects/InvEHL/src/eikonal/eikonal.hpp
 vector
 -
 opencv2/opencv.hpp

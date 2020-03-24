@@ -36,24 +36,43 @@ message("pde_test is ${pde_test}")
 
 find_package (Threads)
 
+FIND_PACKAGE( OpenMP REQUIRED)
+if(OPENMP_FOUND)
+message("OPENMP FOUND")
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+
+endif()
+
 
 
 find_package(Eigen3 3.1.0 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
-add_library(ioLib io/iniReader.cpp  io/ini.c io/ioEigen.cpp)
+set(ROOT ${PROJECT_SOURCE_DIR})
+set(SRC "${ROOT}/src")
+include_directories("${SRC}")
+
+add_library(ioLib 
+${SRC}/io/iniReader.cpp  
+${SRC}/io/ini.c 
+${SRC}/io/ioEigen.cpp 
+${SRC}/io/utilities.cpp)
 
 find_package(OpenCV REQUIRED)
-add_library(eikonalLib eikonal/eikonal.cpp)
+add_library(eikonalLib ${SRC}/eikonal/eikonal.cpp)
 
+add_library(pdeLib
+${SRC}/io/ioEigen.cpp 
+${SRC}/pde/mesh.cpp 
+${SRC}/pde/data.cpp
+${SRC}/pde/tfe.cpp)
 
-add_library(pdeLib1 pde/mesh.cpp)
-
-add_executable(main test/pde_test.cpp)
-target_link_libraries(main PRIVATE ioLib eikonalLib pdeLib1 ${OpenCV_LIBS} ${EIGEN3_LIBS} ${CMAKE_THREAD_LIBS_INIT})
+add_executable(main ${ROOT}/test/pde_test.cpp)
+target_link_libraries(main PRIVATE ioLib eikonalLib pdeLib ${OpenCV_LIBS} ${EIGEN3_LIBS} ${CMAKE_THREAD_LIBS_INIT})
 
 else()
-
-message("pde_test is ${pde_test}")
 
 endif()

@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "../eikonal/eikonal.hpp"
-#include "../io/iniReader.hpp"
+#include "eikonal/eikonal.hpp"
+#include "io/iniReader.hpp"
 
 using namespace cv;
 

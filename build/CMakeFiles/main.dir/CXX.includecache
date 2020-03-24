@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/czhou/Projects/InvEHL/eikonal/eikonal.hpp
+../src/eikonal/eikonal.hpp
 vector
 -
 opencv2/opencv.hpp
 -
 
-/home/czhou/Projects/InvEHL/io/iniReader.hpp
+../src/io/iniReader.hpp
 map
 -
 string
 -
 
-/home/czhou/Projects/InvEHL/io/ioEigen.hpp
+../src/io/ioEigen.hpp
 opencv2/opencv.hpp
 -
 eigen3/Eigen/Core
@@ -26,11 +26,35 @@ eigen3/Eigen/Core
 string
 -
 
-/home/czhou/Projects/InvEHL/pde/mesh.hpp
+../src/io/utilities.hpp
+
+../src/pde/data.hpp
+vector
+-
+eigen3/Eigen/Core
+-
+
+../src/pde/mesh.hpp
 vector
 -
 eigen3/Eigen/Sparse
 -
+
+../src/pde/tfe.hpp
+eigen3/Eigen/Dense
+-
+fstream
+-
+string
+-
+pde/mesh.hpp
+../src/pde/pde/mesh.hpp
+pde/data.hpp
+../src/pde/pde/data.hpp
+io/iniReader.hpp
+../src/pde/io/iniReader.hpp
+io/ioEigen.hpp
+../src/pde/io/ioEigen.hpp
 
 /home/czhou/Projects/InvEHL/test/pde_test.cpp
 iostream
@@ -39,14 +63,14 @@ eigen3/Eigen/Core
 -
 thread
 -
-../eikonal/eikonal.hpp
-/home/czhou/Projects/InvEHL/eikonal/eikonal.hpp
-../io/iniReader.hpp
-/home/czhou/Projects/InvEHL/io/iniReader.hpp
-../io/ioEigen.hpp
-/home/czhou/Projects/InvEHL/io/ioEigen.hpp
-../pde/mesh.hpp
-/home/czhou/Projects/InvEHL/pde/mesh.hpp
+eikonal/eikonal.hpp
+/home/czhou/Projects/InvEHL/test/eikonal/eikonal.hpp
+io/ioEigen.hpp
+/home/czhou/Projects/InvEHL/test/io/ioEigen.hpp
+io/utilities.hpp
+/home/czhou/Projects/InvEHL/test/io/utilities.hpp
+pde/tfe.hpp
+/home/czhou/Projects/InvEHL/test/pde/tfe.hpp
 
 /usr/local/include/opencv/cxcore.h
 opencv2/core/core_c.h

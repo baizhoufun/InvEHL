@@ -4,13 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/czhou/Projects/InvEHL/eikonal/eikonal.cpp" "/home/czhou/Projects/InvEHL/build/CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o"
+  "/home/czhou/Projects/InvEHL/src/eikonal/eikonal.cpp" "/home/czhou/Projects/InvEHL/build/CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/eigen3"
+  "../src"
   )
 
 # Targets to which this target links.

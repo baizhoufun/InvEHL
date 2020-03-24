@@ -92,7 +92,7 @@ main: CMakeFiles/main.dir/test/pde_test.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: libioLib.a
 main: libeikonalLib.a
-main: libpdeLib1.a
+main: libpdeLib.a
 main: /usr/local/lib/libopencv_stitching.so.3.2.0
 main: /usr/local/lib/libopencv_superres.so.3.2.0
 main: /usr/local/lib/libopencv_videostab.so.3.2.0

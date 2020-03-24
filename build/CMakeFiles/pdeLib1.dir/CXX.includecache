@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/czhou/Projects/InvEHL/pde/mesh.cpp
+/home/czhou/Projects/InvEHL/src/pde/mesh.cpp
 fstream
 -
 string
@@ -14,9 +14,9 @@ string
 stdio.h
 -
 mesh.hpp
-/home/czhou/Projects/InvEHL/pde/mesh.hpp
+/home/czhou/Projects/InvEHL/src/pde/mesh.hpp
 
-/home/czhou/Projects/InvEHL/pde/mesh.hpp
+/home/czhou/Projects/InvEHL/src/pde/mesh.hpp
 vector
 -
 eigen3/Eigen/Sparse

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/pdeLib1.dir/pde/mesh.cpp.o"
+  "CMakeFiles/pdeLib1.dir/src/pde/mesh.cpp.o"
   "libpdeLib1.pdb"
   "libpdeLib1.a"
 )

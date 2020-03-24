@@ -57,93 +57,119 @@ include CMakeFiles/ioLib.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ioLib.dir/flags.make
 
-CMakeFiles/ioLib.dir/io/iniReader.cpp.o: CMakeFiles/ioLib.dir/flags.make
-CMakeFiles/ioLib.dir/io/iniReader.cpp.o: ../io/iniReader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ioLib.dir/io/iniReader.cpp.o"
-	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ioLib.dir/io/iniReader.cpp.o -c /home/czhou/Projects/InvEHL/io/iniReader.cpp
+CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o: CMakeFiles/ioLib.dir/flags.make
+CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o: ../src/io/iniReader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o"
+	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o -c /home/czhou/Projects/InvEHL/src/io/iniReader.cpp
 
-CMakeFiles/ioLib.dir/io/iniReader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ioLib.dir/io/iniReader.cpp.i"
-	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/io/iniReader.cpp > CMakeFiles/ioLib.dir/io/iniReader.cpp.i
+CMakeFiles/ioLib.dir/src/io/iniReader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ioLib.dir/src/io/iniReader.cpp.i"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/src/io/iniReader.cpp > CMakeFiles/ioLib.dir/src/io/iniReader.cpp.i
 
-CMakeFiles/ioLib.dir/io/iniReader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ioLib.dir/io/iniReader.cpp.s"
-	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/io/iniReader.cpp -o CMakeFiles/ioLib.dir/io/iniReader.cpp.s
+CMakeFiles/ioLib.dir/src/io/iniReader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ioLib.dir/src/io/iniReader.cpp.s"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/src/io/iniReader.cpp -o CMakeFiles/ioLib.dir/src/io/iniReader.cpp.s
 
-CMakeFiles/ioLib.dir/io/iniReader.cpp.o.requires:
+CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o.requires:
 
-.PHONY : CMakeFiles/ioLib.dir/io/iniReader.cpp.o.requires
+.PHONY : CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o.requires
 
-CMakeFiles/ioLib.dir/io/iniReader.cpp.o.provides: CMakeFiles/ioLib.dir/io/iniReader.cpp.o.requires
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/iniReader.cpp.o.provides.build
-.PHONY : CMakeFiles/ioLib.dir/io/iniReader.cpp.o.provides
+CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o.provides: CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o.provides.build
+.PHONY : CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o.provides
 
-CMakeFiles/ioLib.dir/io/iniReader.cpp.o.provides.build: CMakeFiles/ioLib.dir/io/iniReader.cpp.o
-
-
-CMakeFiles/ioLib.dir/io/ini.c.o: CMakeFiles/ioLib.dir/flags.make
-CMakeFiles/ioLib.dir/io/ini.c.o: ../io/ini.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ioLib.dir/io/ini.c.o"
-	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ioLib.dir/io/ini.c.o   -c /home/czhou/Projects/InvEHL/io/ini.c
-
-CMakeFiles/ioLib.dir/io/ini.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ioLib.dir/io/ini.c.i"
-	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/czhou/Projects/InvEHL/io/ini.c > CMakeFiles/ioLib.dir/io/ini.c.i
-
-CMakeFiles/ioLib.dir/io/ini.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ioLib.dir/io/ini.c.s"
-	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/czhou/Projects/InvEHL/io/ini.c -o CMakeFiles/ioLib.dir/io/ini.c.s
-
-CMakeFiles/ioLib.dir/io/ini.c.o.requires:
-
-.PHONY : CMakeFiles/ioLib.dir/io/ini.c.o.requires
-
-CMakeFiles/ioLib.dir/io/ini.c.o.provides: CMakeFiles/ioLib.dir/io/ini.c.o.requires
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ini.c.o.provides.build
-.PHONY : CMakeFiles/ioLib.dir/io/ini.c.o.provides
-
-CMakeFiles/ioLib.dir/io/ini.c.o.provides.build: CMakeFiles/ioLib.dir/io/ini.c.o
+CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o.provides.build: CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o
 
 
-CMakeFiles/ioLib.dir/io/ioEigen.cpp.o: CMakeFiles/ioLib.dir/flags.make
-CMakeFiles/ioLib.dir/io/ioEigen.cpp.o: ../io/ioEigen.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ioLib.dir/io/ioEigen.cpp.o"
-	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ioLib.dir/io/ioEigen.cpp.o -c /home/czhou/Projects/InvEHL/io/ioEigen.cpp
+CMakeFiles/ioLib.dir/src/io/ini.c.o: CMakeFiles/ioLib.dir/flags.make
+CMakeFiles/ioLib.dir/src/io/ini.c.o: ../src/io/ini.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ioLib.dir/src/io/ini.c.o"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ioLib.dir/src/io/ini.c.o   -c /home/czhou/Projects/InvEHL/src/io/ini.c
 
-CMakeFiles/ioLib.dir/io/ioEigen.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ioLib.dir/io/ioEigen.cpp.i"
-	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/io/ioEigen.cpp > CMakeFiles/ioLib.dir/io/ioEigen.cpp.i
+CMakeFiles/ioLib.dir/src/io/ini.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ioLib.dir/src/io/ini.c.i"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/czhou/Projects/InvEHL/src/io/ini.c > CMakeFiles/ioLib.dir/src/io/ini.c.i
 
-CMakeFiles/ioLib.dir/io/ioEigen.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ioLib.dir/io/ioEigen.cpp.s"
-	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/io/ioEigen.cpp -o CMakeFiles/ioLib.dir/io/ioEigen.cpp.s
+CMakeFiles/ioLib.dir/src/io/ini.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ioLib.dir/src/io/ini.c.s"
+	/usr/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/czhou/Projects/InvEHL/src/io/ini.c -o CMakeFiles/ioLib.dir/src/io/ini.c.s
 
-CMakeFiles/ioLib.dir/io/ioEigen.cpp.o.requires:
+CMakeFiles/ioLib.dir/src/io/ini.c.o.requires:
 
-.PHONY : CMakeFiles/ioLib.dir/io/ioEigen.cpp.o.requires
+.PHONY : CMakeFiles/ioLib.dir/src/io/ini.c.o.requires
 
-CMakeFiles/ioLib.dir/io/ioEigen.cpp.o.provides: CMakeFiles/ioLib.dir/io/ioEigen.cpp.o.requires
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ioEigen.cpp.o.provides.build
-.PHONY : CMakeFiles/ioLib.dir/io/ioEigen.cpp.o.provides
+CMakeFiles/ioLib.dir/src/io/ini.c.o.provides: CMakeFiles/ioLib.dir/src/io/ini.c.o.requires
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/ini.c.o.provides.build
+.PHONY : CMakeFiles/ioLib.dir/src/io/ini.c.o.provides
 
-CMakeFiles/ioLib.dir/io/ioEigen.cpp.o.provides.build: CMakeFiles/ioLib.dir/io/ioEigen.cpp.o
+CMakeFiles/ioLib.dir/src/io/ini.c.o.provides.build: CMakeFiles/ioLib.dir/src/io/ini.c.o
+
+
+CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o: CMakeFiles/ioLib.dir/flags.make
+CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o: ../src/io/ioEigen.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o"
+	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o -c /home/czhou/Projects/InvEHL/src/io/ioEigen.cpp
+
+CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.i"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/src/io/ioEigen.cpp > CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.i
+
+CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.s"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/src/io/ioEigen.cpp -o CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.s
+
+CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o.requires:
+
+.PHONY : CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o.requires
+
+CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o.provides: CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o.provides.build
+.PHONY : CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o.provides
+
+CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o.provides.build: CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o
+
+
+CMakeFiles/ioLib.dir/src/io/utilities.cpp.o: CMakeFiles/ioLib.dir/flags.make
+CMakeFiles/ioLib.dir/src/io/utilities.cpp.o: ../src/io/utilities.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ioLib.dir/src/io/utilities.cpp.o"
+	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ioLib.dir/src/io/utilities.cpp.o -c /home/czhou/Projects/InvEHL/src/io/utilities.cpp
+
+CMakeFiles/ioLib.dir/src/io/utilities.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ioLib.dir/src/io/utilities.cpp.i"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/src/io/utilities.cpp > CMakeFiles/ioLib.dir/src/io/utilities.cpp.i
+
+CMakeFiles/ioLib.dir/src/io/utilities.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ioLib.dir/src/io/utilities.cpp.s"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/src/io/utilities.cpp -o CMakeFiles/ioLib.dir/src/io/utilities.cpp.s
+
+CMakeFiles/ioLib.dir/src/io/utilities.cpp.o.requires:
+
+.PHONY : CMakeFiles/ioLib.dir/src/io/utilities.cpp.o.requires
+
+CMakeFiles/ioLib.dir/src/io/utilities.cpp.o.provides: CMakeFiles/ioLib.dir/src/io/utilities.cpp.o.requires
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/utilities.cpp.o.provides.build
+.PHONY : CMakeFiles/ioLib.dir/src/io/utilities.cpp.o.provides
+
+CMakeFiles/ioLib.dir/src/io/utilities.cpp.o.provides.build: CMakeFiles/ioLib.dir/src/io/utilities.cpp.o
 
 
 # Object files for target ioLib
 ioLib_OBJECTS = \
-"CMakeFiles/ioLib.dir/io/iniReader.cpp.o" \
-"CMakeFiles/ioLib.dir/io/ini.c.o" \
-"CMakeFiles/ioLib.dir/io/ioEigen.cpp.o"
+"CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o" \
+"CMakeFiles/ioLib.dir/src/io/ini.c.o" \
+"CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o" \
+"CMakeFiles/ioLib.dir/src/io/utilities.cpp.o"
 
 # External object files for target ioLib
 ioLib_EXTERNAL_OBJECTS =
 
-libioLib.a: CMakeFiles/ioLib.dir/io/iniReader.cpp.o
-libioLib.a: CMakeFiles/ioLib.dir/io/ini.c.o
-libioLib.a: CMakeFiles/ioLib.dir/io/ioEigen.cpp.o
+libioLib.a: CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o
+libioLib.a: CMakeFiles/ioLib.dir/src/io/ini.c.o
+libioLib.a: CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o
+libioLib.a: CMakeFiles/ioLib.dir/src/io/utilities.cpp.o
 libioLib.a: CMakeFiles/ioLib.dir/build.make
 libioLib.a: CMakeFiles/ioLib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libioLib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libioLib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/ioLib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ioLib.dir/link.txt --verbose=$(VERBOSE)
 
@@ -152,9 +178,10 @@ CMakeFiles/ioLib.dir/build: libioLib.a
 
 .PHONY : CMakeFiles/ioLib.dir/build
 
-CMakeFiles/ioLib.dir/requires: CMakeFiles/ioLib.dir/io/iniReader.cpp.o.requires
-CMakeFiles/ioLib.dir/requires: CMakeFiles/ioLib.dir/io/ini.c.o.requires
-CMakeFiles/ioLib.dir/requires: CMakeFiles/ioLib.dir/io/ioEigen.cpp.o.requires
+CMakeFiles/ioLib.dir/requires: CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o.requires
+CMakeFiles/ioLib.dir/requires: CMakeFiles/ioLib.dir/src/io/ini.c.o.requires
+CMakeFiles/ioLib.dir/requires: CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o.requires
+CMakeFiles/ioLib.dir/requires: CMakeFiles/ioLib.dir/src/io/utilities.cpp.o.requires
 
 .PHONY : CMakeFiles/ioLib.dir/requires
 

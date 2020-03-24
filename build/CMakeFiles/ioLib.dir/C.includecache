@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/czhou/Projects/InvEHL/io/ini.c
+/home/czhou/Projects/InvEHL/src/io/ini.c
 stdio.h
 -
 ctype.h
@@ -14,11 +14,11 @@ ctype.h
 string.h
 -
 ini.h
-/home/czhou/Projects/InvEHL/io/ini.h
+/home/czhou/Projects/InvEHL/src/io/ini.h
 stdlib.h
 -
 
-/home/czhou/Projects/InvEHL/io/ini.h
+/home/czhou/Projects/InvEHL/src/io/ini.h
 stdio.h
 -
 

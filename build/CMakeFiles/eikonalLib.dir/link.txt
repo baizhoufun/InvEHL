@@ -1,2 +1,2 @@
-/usr/bin/ar qc libeikonalLib.a  CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o
+/usr/bin/ar qc libeikonalLib.a  CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o
 /usr/bin/ranlib libeikonalLib.a

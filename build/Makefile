@@ -124,19 +124,6 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
-# Target rules for targets named pdeLib1
-
-# Build rule for target.
-pdeLib1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pdeLib1
-.PHONY : pdeLib1
-
-# fast build rule for target.
-pdeLib1/fast:
-	$(MAKE) -f CMakeFiles/pdeLib1.dir/build.make CMakeFiles/pdeLib1.dir/build
-.PHONY : pdeLib1/fast
-
-#=============================================================================
 # Target rules for targets named ioLib
 
 # Build rule for target.
@@ -148,6 +135,19 @@ ioLib: cmake_check_build_system
 ioLib/fast:
 	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/build
 .PHONY : ioLib/fast
+
+#=============================================================================
+# Target rules for targets named pdeLib
+
+# Build rule for target.
+pdeLib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pdeLib
+.PHONY : pdeLib
+
+# fast build rule for target.
+pdeLib/fast:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/build
+.PHONY : pdeLib/fast
 
 #=============================================================================
 # Target rules for targets named eikonalLib
@@ -162,140 +162,224 @@ eikonalLib/fast:
 	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/build
 .PHONY : eikonalLib/fast
 
-eikonal/eikonal.o: eikonal/eikonal.cpp.o
+src/eikonal/eikonal.o: src/eikonal/eikonal.cpp.o
 
-.PHONY : eikonal/eikonal.o
-
-# target to build an object file
-eikonal/eikonal.cpp.o:
-	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o
-.PHONY : eikonal/eikonal.cpp.o
-
-eikonal/eikonal.i: eikonal/eikonal.cpp.i
-
-.PHONY : eikonal/eikonal.i
-
-# target to preprocess a source file
-eikonal/eikonal.cpp.i:
-	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.i
-.PHONY : eikonal/eikonal.cpp.i
-
-eikonal/eikonal.s: eikonal/eikonal.cpp.s
-
-.PHONY : eikonal/eikonal.s
-
-# target to generate assembly for a file
-eikonal/eikonal.cpp.s:
-	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.s
-.PHONY : eikonal/eikonal.cpp.s
-
-io/ini.o: io/ini.c.o
-
-.PHONY : io/ini.o
+.PHONY : src/eikonal/eikonal.o
 
 # target to build an object file
-io/ini.c.o:
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ini.c.o
-.PHONY : io/ini.c.o
+src/eikonal/eikonal.cpp.o:
+	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o
+.PHONY : src/eikonal/eikonal.cpp.o
 
-io/ini.i: io/ini.c.i
+src/eikonal/eikonal.i: src/eikonal/eikonal.cpp.i
 
-.PHONY : io/ini.i
+.PHONY : src/eikonal/eikonal.i
 
 # target to preprocess a source file
-io/ini.c.i:
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ini.c.i
-.PHONY : io/ini.c.i
+src/eikonal/eikonal.cpp.i:
+	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.i
+.PHONY : src/eikonal/eikonal.cpp.i
 
-io/ini.s: io/ini.c.s
+src/eikonal/eikonal.s: src/eikonal/eikonal.cpp.s
 
-.PHONY : io/ini.s
+.PHONY : src/eikonal/eikonal.s
 
 # target to generate assembly for a file
-io/ini.c.s:
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ini.c.s
-.PHONY : io/ini.c.s
+src/eikonal/eikonal.cpp.s:
+	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.s
+.PHONY : src/eikonal/eikonal.cpp.s
 
-io/iniReader.o: io/iniReader.cpp.o
+src/io/ini.o: src/io/ini.c.o
 
-.PHONY : io/iniReader.o
+.PHONY : src/io/ini.o
 
 # target to build an object file
-io/iniReader.cpp.o:
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/iniReader.cpp.o
-.PHONY : io/iniReader.cpp.o
+src/io/ini.c.o:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/ini.c.o
+.PHONY : src/io/ini.c.o
 
-io/iniReader.i: io/iniReader.cpp.i
+src/io/ini.i: src/io/ini.c.i
 
-.PHONY : io/iniReader.i
+.PHONY : src/io/ini.i
 
 # target to preprocess a source file
-io/iniReader.cpp.i:
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/iniReader.cpp.i
-.PHONY : io/iniReader.cpp.i
+src/io/ini.c.i:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/ini.c.i
+.PHONY : src/io/ini.c.i
 
-io/iniReader.s: io/iniReader.cpp.s
+src/io/ini.s: src/io/ini.c.s
 
-.PHONY : io/iniReader.s
+.PHONY : src/io/ini.s
 
 # target to generate assembly for a file
-io/iniReader.cpp.s:
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/iniReader.cpp.s
-.PHONY : io/iniReader.cpp.s
+src/io/ini.c.s:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/ini.c.s
+.PHONY : src/io/ini.c.s
 
-io/ioEigen.o: io/ioEigen.cpp.o
+src/io/iniReader.o: src/io/iniReader.cpp.o
 
-.PHONY : io/ioEigen.o
+.PHONY : src/io/iniReader.o
 
 # target to build an object file
-io/ioEigen.cpp.o:
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ioEigen.cpp.o
-.PHONY : io/ioEigen.cpp.o
+src/io/iniReader.cpp.o:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o
+.PHONY : src/io/iniReader.cpp.o
 
-io/ioEigen.i: io/ioEigen.cpp.i
+src/io/iniReader.i: src/io/iniReader.cpp.i
 
-.PHONY : io/ioEigen.i
+.PHONY : src/io/iniReader.i
 
 # target to preprocess a source file
-io/ioEigen.cpp.i:
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ioEigen.cpp.i
-.PHONY : io/ioEigen.cpp.i
+src/io/iniReader.cpp.i:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/iniReader.cpp.i
+.PHONY : src/io/iniReader.cpp.i
 
-io/ioEigen.s: io/ioEigen.cpp.s
+src/io/iniReader.s: src/io/iniReader.cpp.s
 
-.PHONY : io/ioEigen.s
+.PHONY : src/io/iniReader.s
 
 # target to generate assembly for a file
-io/ioEigen.cpp.s:
-	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/io/ioEigen.cpp.s
-.PHONY : io/ioEigen.cpp.s
+src/io/iniReader.cpp.s:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/iniReader.cpp.s
+.PHONY : src/io/iniReader.cpp.s
 
-pde/mesh.o: pde/mesh.cpp.o
+src/io/ioEigen.o: src/io/ioEigen.cpp.o
 
-.PHONY : pde/mesh.o
+.PHONY : src/io/ioEigen.o
 
 # target to build an object file
-pde/mesh.cpp.o:
-	$(MAKE) -f CMakeFiles/pdeLib1.dir/build.make CMakeFiles/pdeLib1.dir/pde/mesh.cpp.o
-.PHONY : pde/mesh.cpp.o
+src/io/ioEigen.cpp.o:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.o
+.PHONY : src/io/ioEigen.cpp.o
 
-pde/mesh.i: pde/mesh.cpp.i
+src/io/ioEigen.i: src/io/ioEigen.cpp.i
 
-.PHONY : pde/mesh.i
+.PHONY : src/io/ioEigen.i
 
 # target to preprocess a source file
-pde/mesh.cpp.i:
-	$(MAKE) -f CMakeFiles/pdeLib1.dir/build.make CMakeFiles/pdeLib1.dir/pde/mesh.cpp.i
-.PHONY : pde/mesh.cpp.i
+src/io/ioEigen.cpp.i:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.i
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.i
+.PHONY : src/io/ioEigen.cpp.i
 
-pde/mesh.s: pde/mesh.cpp.s
+src/io/ioEigen.s: src/io/ioEigen.cpp.s
 
-.PHONY : pde/mesh.s
+.PHONY : src/io/ioEigen.s
 
 # target to generate assembly for a file
-pde/mesh.cpp.s:
-	$(MAKE) -f CMakeFiles/pdeLib1.dir/build.make CMakeFiles/pdeLib1.dir/pde/mesh.cpp.s
-.PHONY : pde/mesh.cpp.s
+src/io/ioEigen.cpp.s:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.s
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.s
+.PHONY : src/io/ioEigen.cpp.s
+
+src/io/utilities.o: src/io/utilities.cpp.o
+
+.PHONY : src/io/utilities.o
+
+# target to build an object file
+src/io/utilities.cpp.o:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/utilities.cpp.o
+.PHONY : src/io/utilities.cpp.o
+
+src/io/utilities.i: src/io/utilities.cpp.i
+
+.PHONY : src/io/utilities.i
+
+# target to preprocess a source file
+src/io/utilities.cpp.i:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/utilities.cpp.i
+.PHONY : src/io/utilities.cpp.i
+
+src/io/utilities.s: src/io/utilities.cpp.s
+
+.PHONY : src/io/utilities.s
+
+# target to generate assembly for a file
+src/io/utilities.cpp.s:
+	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/utilities.cpp.s
+.PHONY : src/io/utilities.cpp.s
+
+src/pde/data.o: src/pde/data.cpp.o
+
+.PHONY : src/pde/data.o
+
+# target to build an object file
+src/pde/data.cpp.o:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/data.cpp.o
+.PHONY : src/pde/data.cpp.o
+
+src/pde/data.i: src/pde/data.cpp.i
+
+.PHONY : src/pde/data.i
+
+# target to preprocess a source file
+src/pde/data.cpp.i:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/data.cpp.i
+.PHONY : src/pde/data.cpp.i
+
+src/pde/data.s: src/pde/data.cpp.s
+
+.PHONY : src/pde/data.s
+
+# target to generate assembly for a file
+src/pde/data.cpp.s:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/data.cpp.s
+.PHONY : src/pde/data.cpp.s
+
+src/pde/mesh.o: src/pde/mesh.cpp.o
+
+.PHONY : src/pde/mesh.o
+
+# target to build an object file
+src/pde/mesh.cpp.o:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o
+.PHONY : src/pde/mesh.cpp.o
+
+src/pde/mesh.i: src/pde/mesh.cpp.i
+
+.PHONY : src/pde/mesh.i
+
+# target to preprocess a source file
+src/pde/mesh.cpp.i:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.i
+.PHONY : src/pde/mesh.cpp.i
+
+src/pde/mesh.s: src/pde/mesh.cpp.s
+
+.PHONY : src/pde/mesh.s
+
+# target to generate assembly for a file
+src/pde/mesh.cpp.s:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.s
+.PHONY : src/pde/mesh.cpp.s
+
+src/pde/tfe.o: src/pde/tfe.cpp.o
+
+.PHONY : src/pde/tfe.o
+
+# target to build an object file
+src/pde/tfe.cpp.o:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o
+.PHONY : src/pde/tfe.cpp.o
+
+src/pde/tfe.i: src/pde/tfe.cpp.i
+
+.PHONY : src/pde/tfe.i
+
+# target to preprocess a source file
+src/pde/tfe.cpp.i:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.i
+.PHONY : src/pde/tfe.cpp.i
+
+src/pde/tfe.s: src/pde/tfe.cpp.s
+
+.PHONY : src/pde/tfe.s
+
+# target to generate assembly for a file
+src/pde/tfe.cpp.s:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.s
+.PHONY : src/pde/tfe.cpp.s
 
 test/pde_test.o: test/pde_test.cpp.o
 
@@ -333,24 +417,33 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... main"
-	@echo "... pdeLib1"
 	@echo "... ioLib"
+	@echo "... pdeLib"
 	@echo "... eikonalLib"
-	@echo "... eikonal/eikonal.o"
-	@echo "... eikonal/eikonal.i"
-	@echo "... eikonal/eikonal.s"
-	@echo "... io/ini.o"
-	@echo "... io/ini.i"
-	@echo "... io/ini.s"
-	@echo "... io/iniReader.o"
-	@echo "... io/iniReader.i"
-	@echo "... io/iniReader.s"
-	@echo "... io/ioEigen.o"
-	@echo "... io/ioEigen.i"
-	@echo "... io/ioEigen.s"
-	@echo "... pde/mesh.o"
-	@echo "... pde/mesh.i"
-	@echo "... pde/mesh.s"
+	@echo "... src/eikonal/eikonal.o"
+	@echo "... src/eikonal/eikonal.i"
+	@echo "... src/eikonal/eikonal.s"
+	@echo "... src/io/ini.o"
+	@echo "... src/io/ini.i"
+	@echo "... src/io/ini.s"
+	@echo "... src/io/iniReader.o"
+	@echo "... src/io/iniReader.i"
+	@echo "... src/io/iniReader.s"
+	@echo "... src/io/ioEigen.o"
+	@echo "... src/io/ioEigen.i"
+	@echo "... src/io/ioEigen.s"
+	@echo "... src/io/utilities.o"
+	@echo "... src/io/utilities.i"
+	@echo "... src/io/utilities.s"
+	@echo "... src/pde/data.o"
+	@echo "... src/pde/data.i"
+	@echo "... src/pde/data.s"
+	@echo "... src/pde/mesh.o"
+	@echo "... src/pde/mesh.i"
+	@echo "... src/pde/mesh.s"
+	@echo "... src/pde/tfe.o"
+	@echo "... src/pde/tfe.i"
+	@echo "... src/pde/tfe.s"
 	@echo "... test/pde_test.o"
 	@echo "... test/pde_test.i"
 	@echo "... test/pde_test.s"

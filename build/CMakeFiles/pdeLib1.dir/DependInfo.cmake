@@ -4,13 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/czhou/Projects/InvEHL/pde/mesh.cpp" "/home/czhou/Projects/InvEHL/build/CMakeFiles/pdeLib1.dir/pde/mesh.cpp.o"
+  "/home/czhou/Projects/InvEHL/src/pde/mesh.cpp" "/home/czhou/Projects/InvEHL/build/CMakeFiles/pdeLib1.dir/src/pde/mesh.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/eigen3"
+  "../src"
   )
 
 # Targets to which this target links.

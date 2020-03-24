@@ -2,10 +2,12 @@
 #include <eigen3/Eigen/Core>
 #include <thread>
 
-#include "../eikonal/eikonal.hpp"
-#include "../io/iniReader.hpp"
-#include "../io/ioEigen.hpp"
-#include "../pde/mesh.hpp"
+#include "eikonal/eikonal.hpp"
+//#include "io/iniReader.hpp"
+#include "io/ioEigen.hpp"
+#include "io/utilities.hpp"
+//#include "pde/mesh.hpp"
+#include "pde/tfe.hpp"
 
 using namespace cv;
 
@@ -52,20 +54,11 @@ int main(int argc, char **argv)
     // cv::imwrite(reader.GetString("eikonal", "outputGF"), ls.phi);
 
     ls.rescaleMinMax();
-    invEHL::pde::Mesh mesh(
-        reader.GetReal("mesh", "lx"),
-        reader.GetReal("mesh", "ly"),
-        reader.GetInteger("mesh", "nx"),
-        reader.GetInteger("mesh", "ny"));
+    invEHL::pde::TFE tfe("../resources/in.ini");
 
-    mesh.initNode();
-    mesh.initElement();
-    mesh.assembleMass();
-    mesh.assembleStiff();
-    mesh.outputMesh(reader.GetString("mesh", "outputElement"), reader.GetString("mesh", "outputNode"));
-
-    Eigen::VectorXd b;
-    invEHL::io::IOEigen::img2Mat(ls.phi, b);
+    //invEHL::io::Utilities::waterMark();
+    //Eigen::VectorXd b;
+    //invEHL::io::IOEigen::img2Mat(ls.phi, b);
 
     return 0;
 }

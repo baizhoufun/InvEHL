@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o"
+  "CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o"
   "libeikonalLib.pdb"
   "libeikonalLib.a"
 )

@@ -57,38 +57,38 @@ include CMakeFiles/eikonalLib.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/eikonalLib.dir/flags.make
 
-CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o: CMakeFiles/eikonalLib.dir/flags.make
-CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o: ../eikonal/eikonal.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o"
-	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o -c /home/czhou/Projects/InvEHL/eikonal/eikonal.cpp
+CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o: CMakeFiles/eikonalLib.dir/flags.make
+CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o: ../src/eikonal/eikonal.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o"
+	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o -c /home/czhou/Projects/InvEHL/src/eikonal/eikonal.cpp
 
-CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.i"
-	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/eikonal/eikonal.cpp > CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.i
+CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.i"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/src/eikonal/eikonal.cpp > CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.i
 
-CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.s"
-	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/eikonal/eikonal.cpp -o CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.s
+CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.s"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/src/eikonal/eikonal.cpp -o CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.s
 
-CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o.requires:
+CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o.requires:
 
-.PHONY : CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o.requires
+.PHONY : CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o.requires
 
-CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o.provides: CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o.requires
-	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o.provides.build
-.PHONY : CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o.provides
+CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o.provides: CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o.requires
+	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o.provides.build
+.PHONY : CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o.provides
 
-CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o.provides.build: CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o
+CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o.provides.build: CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o
 
 
 # Object files for target eikonalLib
 eikonalLib_OBJECTS = \
-"CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o"
+"CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o"
 
 # External object files for target eikonalLib
 eikonalLib_EXTERNAL_OBJECTS =
 
-libeikonalLib.a: CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o
+libeikonalLib.a: CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o
 libeikonalLib.a: CMakeFiles/eikonalLib.dir/build.make
 libeikonalLib.a: CMakeFiles/eikonalLib.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libeikonalLib.a"
@@ -100,7 +100,7 @@ CMakeFiles/eikonalLib.dir/build: libeikonalLib.a
 
 .PHONY : CMakeFiles/eikonalLib.dir/build
 
-CMakeFiles/eikonalLib.dir/requires: CMakeFiles/eikonalLib.dir/eikonal/eikonal.cpp.o.requires
+CMakeFiles/eikonalLib.dir/requires: CMakeFiles/eikonalLib.dir/src/eikonal/eikonal.cpp.o.requires
 
 .PHONY : CMakeFiles/eikonalLib.dir/requires
 
