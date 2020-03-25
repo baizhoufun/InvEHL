@@ -3,13 +3,13 @@
 
 # compile C with /usr/bin/gcc-7
 # compile CXX with /usr/bin/g++-7
-C_FLAGS =  -fopenmp -g   -std=c++11 -O3
+C_FLAGS =  -fopenmp   -std=c++11 -O3
 
 C_DEFINES = 
 
 C_INCLUDES = -I/usr/include/eigen3 -I/home/czhou/Projects/InvEHL/src 
 
-CXX_FLAGS =  -fopenmp -g   -std=c++11 -O3
+CXX_FLAGS =  -fopenmp   -std=c++11 -O3
 
 CXX_DEFINES = 
 

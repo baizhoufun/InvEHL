@@ -7,12 +7,17 @@ CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.o: ../src/io/ioEigen.cpp
 CMakeFiles/pdeLib.dir/src/pde/data.cpp.o: ../src/pde/data.cpp
 CMakeFiles/pdeLib.dir/src/pde/data.cpp.o: ../src/pde/data.hpp
 
+CMakeFiles/pdeLib.dir/src/pde/function.cpp.o: ../src/pde/function.hpp
+CMakeFiles/pdeLib.dir/src/pde/function.cpp.o: ../src/pde/function.cpp
+
 CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o: ../src/pde/mesh.cpp
 CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o: ../src/pde/mesh.hpp
 
+CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o: ../src/eikonal/eikonal.hpp
 CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o: ../src/io/iniReader.hpp
 CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o: ../src/io/ioEigen.hpp
 CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o: ../src/pde/data.hpp
+CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o: ../src/pde/function.hpp
 CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o: ../src/pde/mesh.hpp
 CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o: ../src/pde/tfe.cpp
 CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o: ../src/pde/tfe.hpp

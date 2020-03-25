@@ -81,9 +81,33 @@ CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.o.provides: CMakeFiles/pdeLib.dir/src/i
 CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.o.provides.build: CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.o
 
 
+CMakeFiles/pdeLib.dir/src/pde/function.cpp.o: CMakeFiles/pdeLib.dir/flags.make
+CMakeFiles/pdeLib.dir/src/pde/function.cpp.o: ../src/pde/function.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pdeLib.dir/src/pde/function.cpp.o"
+	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pdeLib.dir/src/pde/function.cpp.o -c /home/czhou/Projects/InvEHL/src/pde/function.cpp
+
+CMakeFiles/pdeLib.dir/src/pde/function.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/pdeLib.dir/src/pde/function.cpp.i"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/src/pde/function.cpp > CMakeFiles/pdeLib.dir/src/pde/function.cpp.i
+
+CMakeFiles/pdeLib.dir/src/pde/function.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/pdeLib.dir/src/pde/function.cpp.s"
+	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/src/pde/function.cpp -o CMakeFiles/pdeLib.dir/src/pde/function.cpp.s
+
+CMakeFiles/pdeLib.dir/src/pde/function.cpp.o.requires:
+
+.PHONY : CMakeFiles/pdeLib.dir/src/pde/function.cpp.o.requires
+
+CMakeFiles/pdeLib.dir/src/pde/function.cpp.o.provides: CMakeFiles/pdeLib.dir/src/pde/function.cpp.o.requires
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/function.cpp.o.provides.build
+.PHONY : CMakeFiles/pdeLib.dir/src/pde/function.cpp.o.provides
+
+CMakeFiles/pdeLib.dir/src/pde/function.cpp.o.provides.build: CMakeFiles/pdeLib.dir/src/pde/function.cpp.o
+
+
 CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o: CMakeFiles/pdeLib.dir/flags.make
 CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o: ../src/pde/mesh.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o"
 	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o -c /home/czhou/Projects/InvEHL/src/pde/mesh.cpp
 
 CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o.provides.build: CMakeFiles/pdeLib.dir/s
 
 CMakeFiles/pdeLib.dir/src/pde/data.cpp.o: CMakeFiles/pdeLib.dir/flags.make
 CMakeFiles/pdeLib.dir/src/pde/data.cpp.o: ../src/pde/data.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pdeLib.dir/src/pde/data.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pdeLib.dir/src/pde/data.cpp.o"
 	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pdeLib.dir/src/pde/data.cpp.o -c /home/czhou/Projects/InvEHL/src/pde/data.cpp
 
 CMakeFiles/pdeLib.dir/src/pde/data.cpp.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/pdeLib.dir/src/pde/data.cpp.o.provides.build: CMakeFiles/pdeLib.dir/s
 
 CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o: CMakeFiles/pdeLib.dir/flags.make
 CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o: ../src/pde/tfe.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o"
 	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o -c /home/czhou/Projects/InvEHL/src/pde/tfe.cpp
 
 CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.i: cmake_force
@@ -156,6 +180,7 @@ CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o.provides.build: CMakeFiles/pdeLib.dir/sr
 # Object files for target pdeLib
 pdeLib_OBJECTS = \
 "CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.o" \
+"CMakeFiles/pdeLib.dir/src/pde/function.cpp.o" \
 "CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o" \
 "CMakeFiles/pdeLib.dir/src/pde/data.cpp.o" \
 "CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o"
@@ -164,12 +189,13 @@ pdeLib_OBJECTS = \
 pdeLib_EXTERNAL_OBJECTS =
 
 libpdeLib.a: CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.o
+libpdeLib.a: CMakeFiles/pdeLib.dir/src/pde/function.cpp.o
 libpdeLib.a: CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o
 libpdeLib.a: CMakeFiles/pdeLib.dir/src/pde/data.cpp.o
 libpdeLib.a: CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o
 libpdeLib.a: CMakeFiles/pdeLib.dir/build.make
 libpdeLib.a: CMakeFiles/pdeLib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libpdeLib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libpdeLib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/pdeLib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pdeLib.dir/link.txt --verbose=$(VERBOSE)
 
@@ -179,6 +205,7 @@ CMakeFiles/pdeLib.dir/build: libpdeLib.a
 .PHONY : CMakeFiles/pdeLib.dir/build
 
 CMakeFiles/pdeLib.dir/requires: CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.o.requires
+CMakeFiles/pdeLib.dir/requires: CMakeFiles/pdeLib.dir/src/pde/function.cpp.o.requires
 CMakeFiles/pdeLib.dir/requires: CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o.requires
 CMakeFiles/pdeLib.dir/requires: CMakeFiles/pdeLib.dir/src/pde/data.cpp.o.requires
 CMakeFiles/pdeLib.dir/requires: CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o.requires

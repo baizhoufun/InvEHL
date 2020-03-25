@@ -7,6 +7,7 @@ CMakeFiles/main.dir/test/pde_test.cpp.o
  ../src/io/ioEigen.hpp
  ../src/io/utilities.hpp
  ../src/pde/data.hpp
+ ../src/pde/function.hpp
  ../src/pde/mesh.hpp
  ../src/pde/tfe.hpp
  /home/czhou/Projects/InvEHL/test/pde_test.cpp

@@ -4,30 +4,6 @@ namespace invEHL
 {
 namespace pde
 {
-// overload of Mesh::ehd method
-Eigen::VectorXd TFE::ehd(double (*fp)(double x, double y), const Eigen::VectorXd &h, const Eigen::VectorXd &f)
-{
-    Eigen::VectorXd tmp = h;
-    tmp.setZero();
-    for (int i = 0; i < h.size(); i++)
-    {
-        tmp(i) = (*fp)(h(i), f(i)); // functional pointer takes two variables h and f
-    }
-    return tmp;
-}
-
-// overload of Mesh::ehd method
-Eigen::VectorXd TFE::ehd(double (*fp)(double x), const Eigen::VectorXd &h)
-{
-    Eigen::VectorXd tmp = h;
-    tmp.setZero();
-    for (int i = 0; i < h.size(); i++)
-    {
-        tmp(i) = (*fp)(h(i)); // functional pointer only takes one variable h
-    }
-    return tmp;
-}
-
 void TFE::resetData()
 {
     const int &tStep = param.tStep;
@@ -71,6 +47,7 @@ void TFE::initialization(const std::string &iniFIleName)
     mesh.info.ny = iniReader.GetInteger("mesh", "ny"),
     param.dt = iniReader.GetReal("pde", "dt");
     param.tStep = iniReader.GetInteger("pde", "tStep");
+    param.bdf = iniReader.GetInteger("pde", "bdf");
     param.rootDir = iniReader.GetString("pde", "rootDir");
     param.tolFRes = iniReader.GetReal("pde", "tolFRes");
     param.tolAdjointSolver = iniReader.GetReal("pde", "tolAdjointSolver");
@@ -82,10 +59,28 @@ void TFE::initialization(const std::string &iniFIleName)
     mesh.assembleStiff();
     mesh.outputMesh(iniReader.GetString("mesh", "outputElement"), iniReader.GetString("mesh", "outputNode"));
     resetData();
+
+    cv::Mat img = cv::imread(iniReader.GetString("mask", "inputMask"));
+    cv::resize(img, img, cv::Size(mesh.info.nx * 2 + 1, mesh.info.ny * 2 + 1));
+    //image::Eikonal ls(img, false, image::Eikonal::Flag::INITIAL_ORIGINAL);
+    //ls.rescaleMinMax();
+
+    io::IOEigen::img2Mat(img, data.control());
 }
-void TFE::setFunction(double (*fp)(double x, double y), Eigen::VectorXd &f, double f0)
+
+void TFE::rescale(double zScale, double zAvg, Eigen::VectorXd &f) const
 {
-    initVector(fp, f);
+    f = f * zScale;
+    double fAvg = one().dot(mesh.lumpedMassMatrix * f) / mesh.oneMassOne();
+
+    f = f + (zAvg - fAvg) * one();
+    std::cout << "input Avg: " << fAvg << " ";
+    std::cout << "now Avg: " << one().dot(mesh.lumpedMassMatrix * f) / mesh.oneMassOne()
+              << " min " << f.minCoeff() << " max " << f.maxCoeff() << "\n";
+};
+void TFE::setFunction(double (*fp)(double x, double y), Eigen::VectorXd &f, double f0) const
+{
+    mesh.initVector(fp, f);
     if (f0 > -0.5)
     {
         double favg = one().dot(mesh.lumpedMassMatrix * f) / mesh.oneMassOne();
@@ -95,7 +90,7 @@ void TFE::setFunction(double (*fp)(double x, double y), Eigen::VectorXd &f, doub
     }
 };
 
-void TFE::setFunction(Eigen::VectorXd &f, double f0) { f.setConstant(f0); };
+void TFE::setFunction(Eigen::VectorXd &f, double f0) const { f.setConstant(f0); };
 
 void TFE::setFunction(const char *filename, Eigen::VectorXd &f, double f0)
 {
@@ -134,23 +129,24 @@ void TFE::BDF(const Eigen::VectorXd &h0, const Eigen::VectorXd &h1, double dt0, 
     const double &tolFRes = param.tolFRes;
 
     W.setZero();
-    mesh.assembleWeightedStiff(W, ehd(h3, h1));
+    mesh.assembleWeightedStiff(W, Function::ehd(Function::h3, h1));
     Eigen::SparseMatrix<double> dPI(dof, dof);
     dPI.setIdentity();
     Eigen::SparseMatrix<double> tmp(dof, dof);
     tmp = W * mesh.lumpedLaplaceMatrix;
 
     h2 = h1;
-    dPI.diagonal() = ehd(dPIdh, h1, f);
+    dPI.diagonal() = Function::ehd(Function::dPIdh, h1, f);
     Eigen::VectorXd hBDF(h1.size());
     bdf(1, alpha, h0, h1, hBDF);
 
+    J = mesh.lumpedMassMatrix - dt0 * alpha[2] * (tmp + W * dPI);
     sol.compute(-J);
     sol.setTolerance(tolStateSolver);
     int iter = 0;
 
     // nonlinear equation (3.44) that we need to solve
-    F = mesh.lumpedMassMatrix * (h2 - hBDF) - dt1 * alpha[2] * (tmp * h2 + W * ehd(PI, h2, f));
+    F = mesh.lumpedMassMatrix * (h2 - hBDF) - dt1 * alpha[2] * (tmp * h2 + W * Function::ehd(Function::PI, h2, f));
     F_res = F.cwiseAbs().maxCoeff();
     while (F_res > tolFRes && iter < maxIter)
     {
@@ -161,14 +157,15 @@ void TFE::BDF(const Eigen::VectorXd &h0, const Eigen::VectorXd &h1, double dt0, 
             printf("State solver failure ...\n");
             //breakAlarm = true;
         }
-        F = mesh.lumpedMassMatrix * (h2 - hBDF) - dt1 * alpha[2] * (tmp * h2 + W * ehd(PI, h2, f));
+        F = mesh.lumpedMassMatrix * (h2 - hBDF) - dt1 * alpha[2] * (tmp * h2 + W * Function::ehd(Function::PI, h2, f));
         F_res = F.cwiseAbs().maxCoeff();
     }
     if (flag == Flag::BDFINFO_ON)
     {
-        std::cout << "BDF nonlinear iter step = " << iter;
+        std::cout << "BDF nonlinear iter step = " << iter << std::endl;
     }
 }
+
 void TFE::bdf(int o, double *alpha)
 {
     switch (o)
@@ -178,7 +175,6 @@ void TFE::bdf(int o, double *alpha)
         alpha[2] = 1.0;
         alpha[1] = 1.0;
         alpha[0] = 0;
-
         //hBDF = h_0;
         break;
     }
@@ -194,9 +190,10 @@ void TFE::bdf(int o, double *alpha)
         break;
     }
 };
+
 void TFE::bdf(int o, double *alpha, const Eigen::VectorXd &h0, const Eigen::VectorXd &h1, Eigen::VectorXd &hBDF)
 {
-    bdf(1, alpha);
+    bdf(o, alpha);
     switch (o)
     {
     case 1:
@@ -206,9 +203,6 @@ void TFE::bdf(int o, double *alpha, const Eigen::VectorXd &h0, const Eigen::Vect
     }
     case 2:
     {
-        alpha[2] = 2. / 3.;
-        alpha[1] = 4. / 3.;
-        alpha[0] = -1. / 3.;
         hBDF = alpha[1] * h1 + alpha[0] * h0;
         break;
     }

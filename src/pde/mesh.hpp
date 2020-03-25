@@ -50,6 +50,7 @@ public:
 	// write mesh to a path
 	void outputMesh(const std::string &elementPath, const std::string &nodePath) const;
 	// ehd function : evaluate function fp which depends on function f and function h, e.g. Pi = 1/ (1+f-h)
+	void initVector(double (*fp)(double x, double y), Eigen::VectorXd &h) const;
 
 private:
 	const static double localMassMatrix[9][9];		// equation (3.111)

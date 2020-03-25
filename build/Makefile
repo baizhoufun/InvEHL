@@ -327,6 +327,33 @@ src/pde/data.cpp.s:
 	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/data.cpp.s
 .PHONY : src/pde/data.cpp.s
 
+src/pde/function.o: src/pde/function.cpp.o
+
+.PHONY : src/pde/function.o
+
+# target to build an object file
+src/pde/function.cpp.o:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/function.cpp.o
+.PHONY : src/pde/function.cpp.o
+
+src/pde/function.i: src/pde/function.cpp.i
+
+.PHONY : src/pde/function.i
+
+# target to preprocess a source file
+src/pde/function.cpp.i:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/function.cpp.i
+.PHONY : src/pde/function.cpp.i
+
+src/pde/function.s: src/pde/function.cpp.s
+
+.PHONY : src/pde/function.s
+
+# target to generate assembly for a file
+src/pde/function.cpp.s:
+	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/pde/function.cpp.s
+.PHONY : src/pde/function.cpp.s
+
 src/pde/mesh.o: src/pde/mesh.cpp.o
 
 .PHONY : src/pde/mesh.o
@@ -438,6 +465,9 @@ help:
 	@echo "... src/pde/data.o"
 	@echo "... src/pde/data.i"
 	@echo "... src/pde/data.s"
+	@echo "... src/pde/function.o"
+	@echo "... src/pde/function.i"
+	@echo "... src/pde/function.s"
 	@echo "... src/pde/mesh.o"
 	@echo "... src/pde/mesh.i"
 	@echo "... src/pde/mesh.s"

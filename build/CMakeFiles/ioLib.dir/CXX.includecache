@@ -43,6 +43,8 @@ fstream
 -
 io/ioEigen.hpp
 /home/czhou/Projects/InvEHL/src/io/io/ioEigen.hpp
+omp.h
+-
 
 /home/czhou/Projects/InvEHL/src/io/utilities.cpp
 utilities.hpp

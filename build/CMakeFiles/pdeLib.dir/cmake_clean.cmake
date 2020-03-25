@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.o"
+  "CMakeFiles/pdeLib.dir/src/pde/function.cpp.o"
   "CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o"
   "CMakeFiles/pdeLib.dir/src/pde/data.cpp.o"
   "CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o"

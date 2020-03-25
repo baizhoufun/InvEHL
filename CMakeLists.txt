@@ -66,6 +66,7 @@ add_library(eikonalLib ${SRC}/eikonal/eikonal.cpp)
 
 add_library(pdeLib
 ${SRC}/io/ioEigen.cpp 
+${SRC}/pde/function.cpp
 ${SRC}/pde/mesh.cpp 
 ${SRC}/pde/data.cpp
 ${SRC}/pde/tfe.cpp)

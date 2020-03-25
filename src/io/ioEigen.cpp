@@ -1,5 +1,6 @@
 #include <eigen3/Eigen/Core>
 #include <fstream>
+#include <omp.h>
 
 #include "io/ioEigen.hpp"
 
@@ -27,8 +28,12 @@ void IOEigen::write(const std::string &fileName, const Eigen::MatrixXd &f)
     printf("Write to %s\n", fileName.c_str());
 }
 
-void IOEigen::img2Mat(const cv::Mat &img, Eigen::VectorXd &b)
+void IOEigen::img2Mat(const cv::Mat &inputImg, Eigen::VectorXd &b)
 {
+    int dep = CV_32FC1;
+    cv::Mat img = cv::Mat::zeros(inputImg.rows, inputImg.cols, dep);
+    cvtColor(inputImg, img, CV_BGR2GRAY);
+
     Eigen::size_t row = img.rows - 1;
     Eigen::size_t col = img.cols - 1;
     b.resize(row * col);
@@ -37,7 +42,7 @@ void IOEigen::img2Mat(const cv::Mat &img, Eigen::VectorXd &b)
     {
         for (int j = 0; j < col; j++)
         {
-            b(i * col + j) = static_cast<double>(img.at<float>(i, j));
+            b(i * col + j) = static_cast<float>(img.at<uchar>(i, j)) / 255.0;
         }
     }
 }

@@ -34,6 +34,10 @@ vector
 eigen3/Eigen/Core
 -
 
+../src/pde/function.hpp
+eigen3/Eigen/Core
+-
+
 ../src/pde/mesh.hpp
 vector
 -
@@ -47,10 +51,14 @@ fstream
 -
 string
 -
+eikonal/eikonal.hpp
+../src/pde/eikonal/eikonal.hpp
 pde/mesh.hpp
 ../src/pde/pde/mesh.hpp
 pde/data.hpp
 ../src/pde/pde/data.hpp
+pde/function.hpp
+../src/pde/pde/function.hpp
 io/iniReader.hpp
 ../src/pde/io/iniReader.hpp
 io/ioEigen.hpp
@@ -63,10 +71,6 @@ eigen3/Eigen/Core
 -
 thread
 -
-eikonal/eikonal.hpp
-/home/czhou/Projects/InvEHL/test/eikonal/eikonal.hpp
-io/ioEigen.hpp
-/home/czhou/Projects/InvEHL/test/io/ioEigen.hpp
 io/utilities.hpp
 /home/czhou/Projects/InvEHL/test/io/utilities.hpp
 pde/tfe.hpp

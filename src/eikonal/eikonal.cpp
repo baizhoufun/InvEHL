@@ -14,18 +14,18 @@ Eikonal::Eikonal()
 {
 }
 
-Eikonal::Eikonal(cv::Mat inputImg, bool FLIP)
+Eikonal::Eikonal(cv::Mat inputImg, bool FLIP, Flag flag)
 {
     rec_ = cv::Rect(0, 0, inputImg.rows, inputImg.cols);
     flip = FLIP;
-    initializePhi(inputImg, rec_);
+    initializePhi(inputImg, rec_, flag);
 }
 
 Eikonal::~Eikonal()
 {
 }
 
-void Eikonal::initializePhi(cv::Mat inputImg, cv::Rect inputPhi)
+void Eikonal::initializePhi(cv::Mat inputImg, cv::Rect inputPhi, Flag flag)
 {
     cvtColor(inputImg, img, CV_BGR2GRAY);
 
@@ -53,14 +53,25 @@ void Eikonal::initializePhi(cv::Mat inputImg, cv::Rect inputPhi)
             }
             else
             {
-                if ((int)img.at<uchar>(i, j) <= 130)
+                switch (flag)
                 {
-                    //phi.at<float>(i, j) = img.at<uchar>(i, j) / 255.;
-                    phiInit_.at<float>(i, j) = phiIn;
+                case Flag::INITIAL_ORIGINAL:
+                {
+                    phiInit_.at<float>(i, j) = static_cast<float>((int)img.at<uchar>(i, j));
+                    break;
                 }
-                else
+                case Flag::INITIAL_BINARY:
                 {
-                    phiInit_.at<float>(i, j) = phiOut;
+                    if ((int)img.at<uchar>(i, j) <= 130)
+                        //phi.at<float>(i, j) = img.at<uchar>(i, j) / 255.;
+                        phiInit_.at<float>(i, j) = phiIn;
+                    else
+                        phiInit_.at<float>(i, j) = phiOut;
+                    break;
+                }
+
+                default:
+                    break;
                 }
             }
         }
@@ -104,5 +115,10 @@ void Eikonal::evolution(int iterNum, float dt, float c1, float c2)
     //rescaleMinMax(0.0, 255.0);
     //GaussianBlur(img, phi, cv::Size(13, 13), 5);
 }
+
+void Eikonal::gaussianBlur(int kGF, float sigmaGF)
+{
+    GaussianBlur(phiInit(), phi, cv::Size(kGF, kGF), sigmaGF);
+}; // namespace image
 } // namespace image
 } // namespace invEHL

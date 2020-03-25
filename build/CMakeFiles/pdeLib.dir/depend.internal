@@ -7,13 +7,18 @@ CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.o
 CMakeFiles/pdeLib.dir/src/pde/data.cpp.o
  /home/czhou/Projects/InvEHL/src/pde/data.cpp
  /home/czhou/Projects/InvEHL/src/pde/data.hpp
+CMakeFiles/pdeLib.dir/src/pde/function.cpp.o
+ ../src/pde/function.hpp
+ /home/czhou/Projects/InvEHL/src/pde/function.cpp
 CMakeFiles/pdeLib.dir/src/pde/mesh.cpp.o
  /home/czhou/Projects/InvEHL/src/pde/mesh.cpp
  /home/czhou/Projects/InvEHL/src/pde/mesh.hpp
 CMakeFiles/pdeLib.dir/src/pde/tfe.cpp.o
+ ../src/eikonal/eikonal.hpp
  ../src/io/iniReader.hpp
  ../src/io/ioEigen.hpp
  ../src/pde/data.hpp
+ ../src/pde/function.hpp
  ../src/pde/mesh.hpp
  /home/czhou/Projects/InvEHL/src/pde/tfe.cpp
  /home/czhou/Projects/InvEHL/src/pde/tfe.hpp

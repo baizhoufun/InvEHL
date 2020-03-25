@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+../src/eikonal/eikonal.hpp
+vector
+-
+opencv2/opencv.hpp
+-
+
 ../src/io/iniReader.hpp
 map
 -
@@ -26,6 +32,10 @@ vector
 eigen3/Eigen/Core
 -
 
+../src/pde/function.hpp
+eigen3/Eigen/Core
+-
+
 ../src/pde/mesh.hpp
 vector
 -
@@ -39,6 +49,8 @@ fstream
 -
 io/ioEigen.hpp
 /home/czhou/Projects/InvEHL/src/io/io/ioEigen.hpp
+omp.h
+-
 
 /home/czhou/Projects/InvEHL/src/pde/data.cpp
 data.hpp
@@ -49,6 +61,10 @@ vector
 -
 eigen3/Eigen/Core
 -
+
+/home/czhou/Projects/InvEHL/src/pde/function.cpp
+pde/function.hpp
+/home/czhou/Projects/InvEHL/src/pde/pde/function.hpp
 
 /home/czhou/Projects/InvEHL/src/pde/mesh.cpp
 fstream
@@ -79,10 +95,14 @@ fstream
 -
 string
 -
+eikonal/eikonal.hpp
+/home/czhou/Projects/InvEHL/src/pde/eikonal/eikonal.hpp
 pde/mesh.hpp
 /home/czhou/Projects/InvEHL/src/pde/pde/mesh.hpp
 pde/data.hpp
 /home/czhou/Projects/InvEHL/src/pde/pde/data.hpp
+pde/function.hpp
+/home/czhou/Projects/InvEHL/src/pde/pde/function.hpp
 io/iniReader.hpp
 /home/czhou/Projects/InvEHL/src/pde/io/iniReader.hpp
 io/ioEigen.hpp

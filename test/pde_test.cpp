@@ -2,9 +2,9 @@
 #include <eigen3/Eigen/Core>
 #include <thread>
 
-#include "eikonal/eikonal.hpp"
+//#include "eikonal/eikonal.hpp"
 //#include "io/iniReader.hpp"
-#include "io/ioEigen.hpp"
+//#include "io/ioEigen.hpp"
 #include "io/utilities.hpp"
 //#include "pde/mesh.hpp"
 #include "pde/tfe.hpp"
@@ -31,32 +31,22 @@ int main(int argc, char **argv)
     if (argc > 1)
         confPath = argv[1];
 
-    Mat img = imread(reader.GetString("eikonal", "input"));
-    cv::resize(img, img,
-               cv::Size(reader.GetInteger("mesh", "nx") * 2 + 1,
-                        reader.GetInteger("mesh", "ny") * 2 + 1));
-
-    invEHL::image::Eikonal ls(img, reader.GetBoolean("eikonal", "flip"));
-
-    ls.evolution(reader.GetInteger("eikonal", "iterLS"),
-                 reader.GetReal("eikonal", "dtLS"),
-                 reader.GetReal("eikonal", "c1"),
-                 reader.GetReal("eikonal", "c2"));
-
-    ls.rescaleMinMax(0, 255);
-    cv::imwrite(reader.GetString("eikonal", "outputLS"), ls.phi);
-
-    // GaussianBlur(ls.phiInit(), ls.phi,
-    //              cv::Size(reader.GetInteger("eikonal", "kGF"), reader.GetInteger("eikonal", "kGF")),
-    //              reader.GetReal("eikonal", "sigmaGF"));
-
     // ls.rescaleMinMax(0, 255);
     // cv::imwrite(reader.GetString("eikonal", "outputGF"), ls.phi);
 
-    ls.rescaleMinMax();
-    invEHL::pde::TFE tfe("../resources/in.ini");
+    invEHL::io::Utilities::waterMark();
 
-    //invEHL::io::Utilities::waterMark();
+    invEHL::pde::TFE tfe("../resources/in.ini");
+    tfe.rescale(0.5, 0.0, tfe.data.control());
+    invEHL::io::IOEigen::write("../resources/control.txt", tfe.data.control());
+    tfe.setFunction(tfe.data.state()[0], 0.125);
+
+    for (int i = 1; i < tfe.param.tStep; ++i)
+    {
+        tfe.BDF(tfe.data.state()[i - 1], tfe.data.state()[i - 1], tfe.param.dt, tfe.param.dt, tfe.data.state()[i], invEHL::pde::TFE::Flag::BDFINFO_ON);
+    }
+    invEHL::io::IOEigen::write("../resources/state/", tfe.data.state());
+
     //Eigen::VectorXd b;
     //invEHL::io::IOEigen::img2Mat(ls.phi, b);
 

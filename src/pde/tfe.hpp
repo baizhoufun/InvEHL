@@ -5,8 +5,10 @@
 #include <fstream>
 #include <string>
 
+#include "eikonal/eikonal.hpp"
 #include "pde/mesh.hpp"
 #include "pde/data.hpp"
+#include "pde/function.hpp"
 #include "io/iniReader.hpp"
 #include "io/ioEigen.hpp"
 
@@ -26,13 +28,14 @@ public:
 		double tMax = 1;
 		int tStep = 1;
 		bool breakAlarm = false;
+		int bdf = 1;
 		std::string rootDir;
 	} param;
+
 	enum class Flag : unsigned int
 	{
 		BDFINFO_ON = 1,
 		BDFINFO_OFF = 2
-
 	};
 
 	TFE(){};
@@ -40,14 +43,19 @@ public:
 	io::INIReader iniReader;
 	Mesh mesh;
 	Data data;
-	const Eigen::VectorXd &one() const { return one_; }
+	image::Eikonal eikonal;
 
 	void initialization(const std::string &iniFIleName);
 	void resetData();
-	void setFunction(double (*fp)(double x, double y), Eigen::VectorXd &f, double f0 = -1.);
-	void setFunction(Eigen::VectorXd &f, double f0);
+	void setFunction(double (*fp)(double x, double y), Eigen::VectorXd &f, double f0 = -1.) const;
+	void setFunction(Eigen::VectorXd &f, double f0) const;
 	void setFunction(const char *filename, Eigen::VectorXd &f, double f0 = -1.);
+	void rescale(double zScale, double zAvg, Eigen::VectorXd &h0) const;
 	void BDF(const Eigen::VectorXd &h0, const Eigen::VectorXd &h1, double dt0, double dt1, Eigen::VectorXd &h2, Flag flag = Flag::BDFINFO_OFF);
+
+	const Eigen::VectorXd &one() const { return one_; }
+
+	// ================= DATA MEMBERS ================== //
 
 	struct solverInfo
 	{
@@ -63,8 +71,6 @@ public:
 		INFO_ON
 	};
 
-	// ================= DATA MEMBERS ================== //
-
 	std::vector<solverInfo> stepMonitor;
 
 	// ================= DYNAMICS AND OPTIMIZATION RELATED MEMBER FUNCTIONS ================== //
@@ -79,47 +85,9 @@ public:
 	// ================= INLINE STATIC FUNCTIONS FOR EHL MODEL ================== //
 
 	// Apply initialized nodal vector h with a function fp evaluated at each FEM nodal point
-	void initVector(double (*fp)(double x, double y), Eigen::VectorXd &h) const
-	{
-		for (size_t i = 0; i < mesh.node.size(); i++)
-		{
-			h(i) = (*fp)(mesh.node[i][0], mesh.node[i][1]);
-		}
-	};
-
-	static Eigen::VectorXd ehd(double (*fp)(double x, double y), const Eigen::VectorXd &h, const Eigen::VectorXd &f);
-	// ehd function : evaluate function fp which only depends function h, e.g. mobility h^3
-	static Eigen::VectorXd ehd(double (*fp)(double x), const Eigen::VectorXd &h);
-	static double h3(double h)
-	{
-		return h * h * h;
-	}; // mobility = H^3
-	static double dh3dh(double h)
-	{
-		return 3. * h * h;
-	}; // d mobility / d H = 3 * H^2
-	// Pi = 1/(D - H)^2 eqn (3.18) where D = 1+ f here :
-	static double PI(double h, double f)
-	{
-		return 1. / pow(1. + f - h, 2.0);
-	};
-	// Potental = integral of Pi in H
-	static double intPIdh(double h, double f)
-	{
-		return 1. / (1. + f - h);
-	};
-	static double dPIdh(double h, double f)
-	{
-		return 2. / pow(1. + f - h, 3.0);
-	}; // partial Pi / partial  H
-	// partial Pi / partial  D = partial Pi / partial  f since D = 1 + f
-	static double dPIdd(double h, double f)
-	{
-		return -2. / pow(1. + f - h, 3.0);
-	};
-	double alpha[4] = {0, 0, 0, 0};
 
 private:
+	double alpha[4] = {0, 0, 0, 0};
 	Eigen::SparseMatrix<double> W, dW;
 	Eigen::SparseMatrix<double, Eigen::RowMajor> J;
 	Eigen::VectorXd F, one_;
