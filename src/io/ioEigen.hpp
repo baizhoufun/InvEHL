@@ -3,6 +3,7 @@
 
 #include <opencv2/opencv.hpp>
 #include <eigen3/Eigen/Core>
+
 #include <string>
 
 namespace invEHL
@@ -12,6 +13,8 @@ namespace io
 class IOEigen
 {
 public:
+    static void waterMark();
+
     static Eigen::MatrixXd readMatrix(const char *filename, int MAXBUFFSIZE);
 
     static void write(const std::string &fileName, const Eigen::VectorXd &f);
@@ -21,6 +24,7 @@ public:
     static void write(const std::string &fileName, const std::vector<Eigen::VectorXd> &fContainer, int k = 1);
 
     static void img2Mat(const cv::Mat &img, Eigen::VectorXd &b);
+    static void mat2Img(const Eigen::VectorXd &b, int col, int row, float aspectRatio, float bmin = 0, float bmax = 1);
 };
 } // namespace io
 } // namespace invEHL

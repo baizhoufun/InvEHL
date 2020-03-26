@@ -27,15 +27,19 @@ int main(int argc, char **argv)
                  reader.GetReal("eikonal", "dtLS"),
                  reader.GetReal("eikonal", "c1"),
                  reader.GetReal("eikonal", "c2"));
+
+    cv::imshow("", ls.phi);
+    cv::waitKey(0);
+
     ls.rescaleMinMax(0, 255);
     cv::imwrite(reader.GetString("eikonal", "outputLS"), ls.phi);
 
-    GaussianBlur(ls.phiInit(), ls.phi,
-                 cv::Size(reader.GetInteger("eikonal", "kGF"), reader.GetInteger("eikonal", "kGF")),
-                 reader.GetReal("eikonal", "sigmaGF"));
+    //GaussianBlur(ls.phiInit(), ls.phi,
+    //           cv::Size(reader.GetInteger("eikonal", "kGF"), reader.GetInteger("eikonal", "kGF")),
+    //         reader.GetReal("eikonal", "sigmaGF"));
 
-    ls.rescaleMinMax(0, 255);
-    cv::imwrite(reader.GetString("eikonal", "outputGF"), ls.phi);
+    //ls.rescaleMinMax(0, 255);
+    //cv::imwrite(reader.GetString("eikonal", "outputGF"), ls.phi);
 
     //std::cout << "test Int: " << reader.GetInteger("PDE", "nx", -1) << std::endl;
     //std::cout << "test real: " << reader.GetReal("PDE", "dt", -1) << std::endl;

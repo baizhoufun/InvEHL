@@ -26,6 +26,8 @@ eigen3/Eigen/Core
 string
 -
 
+../src/io/utilities.hpp
+
 ../src/pde/data.hpp
 vector
 -
@@ -42,15 +44,21 @@ vector
 eigen3/Eigen/Sparse
 -
 
-/home/czhou/Projects/InvEHL/src/io/ioEigen.cpp
-eigen3/Eigen/Core
+../src/pde/tfe.hpp
+eigen3/Eigen/Dense
 -
 fstream
 -
-io/ioEigen.hpp
-/home/czhou/Projects/InvEHL/src/io/io/ioEigen.hpp
-omp.h
+string
 -
+eikonal/eikonal.hpp
+../src/pde/eikonal/eikonal.hpp
+pde/mesh.hpp
+../src/pde/pde/mesh.hpp
+pde/data.hpp
+../src/pde/pde/data.hpp
+io/iniReader.hpp
+../src/pde/io/iniReader.hpp
 
 /home/czhou/Projects/InvEHL/src/pde/data.cpp
 data.hpp
@@ -83,28 +91,14 @@ eigen3/Eigen/Sparse
 -
 
 /home/czhou/Projects/InvEHL/src/pde/tfe.cpp
-tfe.hpp
-/home/czhou/Projects/InvEHL/src/pde/tfe.hpp
-iostream
--
-
-/home/czhou/Projects/InvEHL/src/pde/tfe.hpp
-eigen3/Eigen/Dense
--
-fstream
--
-string
--
-eikonal/eikonal.hpp
-/home/czhou/Projects/InvEHL/src/pde/eikonal/eikonal.hpp
-pde/mesh.hpp
-/home/czhou/Projects/InvEHL/src/pde/pde/mesh.hpp
-pde/data.hpp
-/home/czhou/Projects/InvEHL/src/pde/pde/data.hpp
 pde/function.hpp
 /home/czhou/Projects/InvEHL/src/pde/pde/function.hpp
-io/iniReader.hpp
-/home/czhou/Projects/InvEHL/src/pde/io/iniReader.hpp
 io/ioEigen.hpp
 /home/czhou/Projects/InvEHL/src/pde/io/ioEigen.hpp
+io/utilities.hpp
+/home/czhou/Projects/InvEHL/src/pde/io/utilities.hpp
+pde/tfe.hpp
+/home/czhou/Projects/InvEHL/src/pde/pde/tfe.hpp
+iostream
+-
 

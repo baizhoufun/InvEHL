@@ -8,9 +8,7 @@
 #include "eikonal/eikonal.hpp"
 #include "pde/mesh.hpp"
 #include "pde/data.hpp"
-#include "pde/function.hpp"
 #include "io/iniReader.hpp"
-#include "io/ioEigen.hpp"
 
 namespace invEHL
 {
@@ -24,18 +22,21 @@ public:
 		double tolFRes = 1e-13;
 		double tolAdjointSolver = 1e-4;
 		double tolStateSolver = 1e-6;
+		double tolStateError = 1e-10;
 		double dt = 0.01;
 		double tMax = 1;
+		double h0 = 0.125;
 		int tStep = 1;
 		bool breakAlarm = false;
 		int bdf = 1;
+		int maxNewtonIter = 6;
 		std::string rootDir;
 	} param;
 
 	enum class Flag : unsigned int
 	{
 		BDFINFO_ON = 1,
-		BDFINFO_OFF = 2
+		BDFINFO_OFF = 3
 	};
 
 	TFE(){};
@@ -51,8 +52,9 @@ public:
 	void setFunction(Eigen::VectorXd &f, double f0) const;
 	void setFunction(const char *filename, Eigen::VectorXd &f, double f0 = -1.);
 	void rescale(double zScale, double zAvg, Eigen::VectorXd &h0) const;
-	void BDF(const Eigen::VectorXd &h0, const Eigen::VectorXd &h1, double dt0, double dt1, Eigen::VectorXd &h2, Flag flag = Flag::BDFINFO_OFF);
-
+	int BDF(const Eigen::VectorXd &h0, const Eigen::VectorXd &h1, Eigen::VectorXd &h2, double dt0, double dt1, int bdfOrder, Flag flag = Flag::BDFINFO_OFF);
+	double FNewton(double gamma, const Eigen::VectorXd &hBDF, const Eigen::VectorXd &h2, Eigen::VectorXd &F);
+	double JNewton(double gamma, const Eigen::VectorXd &h1, Eigen::SparseMatrix<double, Eigen::RowMajor> &J);
 	const Eigen::VectorXd &one() const { return one_; }
 
 	// ================= DATA MEMBERS ================== //
@@ -87,12 +89,14 @@ public:
 	// Apply initialized nodal vector h with a function fp evaluated at each FEM nodal point
 
 private:
+	void setParam();
 	double alpha[4] = {0, 0, 0, 0};
-	Eigen::SparseMatrix<double> W, dW;
-	Eigen::SparseMatrix<double, Eigen::RowMajor> J;
-	Eigen::VectorXd F, one_;
+	Eigen::SparseMatrix<double> W_, dW_, WLap_;
+	Eigen::SparseMatrix<double, Eigen::RowMajor> J_;
+	Eigen::VectorXd F_, one_;
 
-	static void bdf(int o, double *alpha);
+	//static void bdf(int o, double *alpha);
+	static void bdf(int o, double *alpha, double delta1 = 1.0);
 	static void bdf(int o, double *alpha, const Eigen::VectorXd &h0, const Eigen::VectorXd &h1, Eigen::VectorXd &hBDF);
 };
 } // namespace pde

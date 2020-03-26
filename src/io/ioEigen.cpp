@@ -10,6 +10,24 @@ namespace invEHL
 {
 namespace io
 {
+void IOEigen::waterMark()
+{
+    std::cout << "  ________   ________   _________   ___   _____ ______    ________   ___           \n";
+    std::cout << " |\\   __  \\ |\\   __  \\ |\\___   ___\\|\\  \\ |\\   _ \\  _   \\ |\\   __  \\ |\\  \\          \n";
+    std::cout << " \\ \\  \\|\\  \\\\ \\  \\|\\  \\\\|___ \\  \\_|\\ \\  \\\\ \\  \\\\\\__\\ \\  \\\\ \\  \\|\\  \\\\ \\  \\         \n";
+    std::cout << "  \\ \\  \\\\\\  \\\\ \\   ____\\    \\ \\  \\  \\ \\  \\\\ \\  \\\\|__| \\  \\\\ \\   __  \\\\ \\  \\        \n";
+    std::cout << "   \\ \\  \\\\\\  \\\\ \\  \\___|     \\ \\  \\  \\ \\  \\\\ \\  \\    \\ \\  \\\\ \\  \\ \\  \\\\ \\  \\____   \n";
+    std::cout << "    \\ \\_______\\\\ \\__\\         \\ \\__\\  \\ \\__\\\\ \\__\\    \\ \\__\\\\ \\__\\ \\__\\\\ \\_______\\ \n";
+    std::cout << "     \\|_______| \\|__|          \\|__|   \\|__| \\|__|     \\|__| \\|__|\\|__| \\|_______| \n";
+    std::cout << "                               _______    ___  ___   ___                        \n";
+    std::cout << "                              |\\  ___ \\  |\\  \\|\\  \\ |\\  \\                       \n";
+    std::cout << "                              \\ \\   __/| \\ \\  \\\\\\  \\\\ \\  \\                      \n";
+    std::cout << "                               \\ \\  \\_|/__\\ \\   __  \\\\ \\  \\                     \n";
+    std::cout << "                                \\ \\  \\_|\\ \\\\ \\  \\ \\  \\\\ \\  \\____                \n";
+    std::cout << "                                 \\ \\_______\\\\ \\__\\ \\__\\\\ \\_______\\              \n";
+    std::cout << "                                  \\|_______| \\|__|\\|__| \\|_______|              \n";
+    std::cout << std::endl;
+}
 void IOEigen::write(const std::string &fileName, const Eigen::VectorXd &f)
 {
     std::ofstream file;
@@ -46,6 +64,29 @@ void IOEigen::img2Mat(const cv::Mat &inputImg, Eigen::VectorXd &b)
         }
     }
 }
+void IOEigen::mat2Img(const Eigen::VectorXd &b, int row, int col, float aspectRatio, float bmin, float bmax)
+{
+    int dep = CV_8UC1;
+    cv::Mat img(row, col, dep);
+
+//Eigen::size_t row = img.rows - 1;
+//Eigen::size_t col = img.cols - 1;
+//b.resize(row * col);
+#pragma omp parallel for num_threads(4)
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
+        { //
+            img.at<uchar>(i, j) = 255.0 * (b(i * col + j) - bmin) / (bmax - bmin);
+            //= static_cast<float>() / 255.0;
+        }
+    }
+
+    cv::resize(img, img, cv::Size(500, 500 * aspectRatio));
+
+    cv::imshow("", img);
+    cv::waitKey(10);
+};
 
 void IOEigen::write(const std::string &fileName, const std::vector<Eigen::VectorXd> &fContainer, int k)
 {
@@ -57,7 +98,8 @@ void IOEigen::write(const std::string &fileName, const std::vector<Eigen::Vector
         dataLength /= 10;
     } while (dataLength);
 
-#pragma omp parallel for num_threads(4)
+#pragma omp parallel for num_threads(4) std::cout << data.control().maxCoeff();
+    std::cout << data.control().minCoeff();
     for (int i = 0; i < fContainer.size(); i += k)
     {
         int number_of_zeros = number_of_digits - std::to_string(i).length();

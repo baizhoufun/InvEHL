@@ -1,4 +1,4 @@
-#include "utilities.hpp"
+#include "io/utilities.hpp"
 #include <iostream>
 #include <omp.h>
 
@@ -6,7 +6,6 @@ namespace invEHL
 {
 namespace io
 {
-
 void Utilities::waterMark()
 {
     std::cout << "  ________   ________   _________   ___   _____ ______    ________   ___           \n";
@@ -40,16 +39,18 @@ void Utilities::toc(bool output)
     endTime = omp_get_wtime();
     if (output)
     {
-        std::cout << "toc\n";
+        std::cout << "toc ... " << endTime - startTime << "\n";
     };
 }
 double Utilities::tictoc(bool output)
 {
+
     if (output)
     {
         std::cout << "tictoc = " << endTime - startTime << std::endl;
     };
     return endTime - startTime;
+    return 0;
 }
 double Utilities::startTime = 0.;
 double Utilities::endTime = 0.;

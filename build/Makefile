@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named ioLib1
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 main
-.PHONY : main
+ioLib1: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ioLib1
+.PHONY : ioLib1
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+ioLib1/fast:
+	$(MAKE) -f CMakeFiles/ioLib1.dir/build.make CMakeFiles/ioLib1.dir/build
+.PHONY : ioLib1/fast
 
 #=============================================================================
 # Target rules for targets named ioLib
@@ -137,6 +137,19 @@ ioLib/fast:
 .PHONY : ioLib/fast
 
 #=============================================================================
+# Target rules for targets named eikonalLib
+
+# Build rule for target.
+eikonalLib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 eikonalLib
+.PHONY : eikonalLib
+
+# fast build rule for target.
+eikonalLib/fast:
+	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/build
+.PHONY : eikonalLib/fast
+
+#=============================================================================
 # Target rules for targets named pdeLib
 
 # Build rule for target.
@@ -150,17 +163,17 @@ pdeLib/fast:
 .PHONY : pdeLib/fast
 
 #=============================================================================
-# Target rules for targets named eikonalLib
+# Target rules for targets named main
 
 # Build rule for target.
-eikonalLib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 eikonalLib
-.PHONY : eikonalLib
+main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-eikonalLib/fast:
-	$(MAKE) -f CMakeFiles/eikonalLib.dir/build.make CMakeFiles/eikonalLib.dir/build
-.PHONY : eikonalLib/fast
+main/fast:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
 src/eikonal/eikonal.o: src/eikonal/eikonal.cpp.o
 
@@ -250,7 +263,6 @@ src/io/ioEigen.o: src/io/ioEigen.cpp.o
 # target to build an object file
 src/io/ioEigen.cpp.o:
 	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.o
-	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.o
 .PHONY : src/io/ioEigen.cpp.o
 
 src/io/ioEigen.i: src/io/ioEigen.cpp.i
@@ -260,7 +272,6 @@ src/io/ioEigen.i: src/io/ioEigen.cpp.i
 # target to preprocess a source file
 src/io/ioEigen.cpp.i:
 	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.i
-	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.i
 .PHONY : src/io/ioEigen.cpp.i
 
 src/io/ioEigen.s: src/io/ioEigen.cpp.s
@@ -270,7 +281,6 @@ src/io/ioEigen.s: src/io/ioEigen.cpp.s
 # target to generate assembly for a file
 src/io/ioEigen.cpp.s:
 	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/ioEigen.cpp.s
-	$(MAKE) -f CMakeFiles/pdeLib.dir/build.make CMakeFiles/pdeLib.dir/src/io/ioEigen.cpp.s
 .PHONY : src/io/ioEigen.cpp.s
 
 src/io/utilities.o: src/io/utilities.cpp.o
@@ -279,6 +289,7 @@ src/io/utilities.o: src/io/utilities.cpp.o
 
 # target to build an object file
 src/io/utilities.cpp.o:
+	$(MAKE) -f CMakeFiles/ioLib1.dir/build.make CMakeFiles/ioLib1.dir/src/io/utilities.cpp.o
 	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/utilities.cpp.o
 .PHONY : src/io/utilities.cpp.o
 
@@ -288,6 +299,7 @@ src/io/utilities.i: src/io/utilities.cpp.i
 
 # target to preprocess a source file
 src/io/utilities.cpp.i:
+	$(MAKE) -f CMakeFiles/ioLib1.dir/build.make CMakeFiles/ioLib1.dir/src/io/utilities.cpp.i
 	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/utilities.cpp.i
 .PHONY : src/io/utilities.cpp.i
 
@@ -297,6 +309,7 @@ src/io/utilities.s: src/io/utilities.cpp.s
 
 # target to generate assembly for a file
 src/io/utilities.cpp.s:
+	$(MAKE) -f CMakeFiles/ioLib1.dir/build.make CMakeFiles/ioLib1.dir/src/io/utilities.cpp.s
 	$(MAKE) -f CMakeFiles/ioLib.dir/build.make CMakeFiles/ioLib.dir/src/io/utilities.cpp.s
 .PHONY : src/io/utilities.cpp.s
 
@@ -441,12 +454,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... main"
+	@echo "... ioLib1"
 	@echo "... ioLib"
-	@echo "... pdeLib"
 	@echo "... eikonalLib"
+	@echo "... rebuild_cache"
+	@echo "... pdeLib"
+	@echo "... main"
+	@echo "... edit_cache"
 	@echo "... src/eikonal/eikonal.o"
 	@echo "... src/eikonal/eikonal.i"
 	@echo "... src/eikonal/eikonal.s"

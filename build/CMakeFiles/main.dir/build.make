@@ -60,15 +60,15 @@ include CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/test/pde_test.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/test/pde_test.cpp.o: ../test/pde_test.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/test/pde_test.cpp.o"
-	/usr/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/test/pde_test.cpp.o -c /home/czhou/Projects/InvEHL/test/pde_test.cpp
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/main.dir/test/pde_test.cpp.o -c /home/czhou/Projects/InvEHL/test/pde_test.cpp
 
 CMakeFiles/main.dir/test/pde_test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/test/pde_test.cpp.i"
-	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/test/pde_test.cpp > CMakeFiles/main.dir/test/pde_test.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/czhou/Projects/InvEHL/test/pde_test.cpp > CMakeFiles/main.dir/test/pde_test.cpp.i
 
 CMakeFiles/main.dir/test/pde_test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/test/pde_test.cpp.s"
-	/usr/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/test/pde_test.cpp -o CMakeFiles/main.dir/test/pde_test.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/czhou/Projects/InvEHL/test/pde_test.cpp -o CMakeFiles/main.dir/test/pde_test.cpp.s
 
 CMakeFiles/main.dir/test/pde_test.cpp.o.requires:
 
@@ -90,8 +90,8 @@ main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/test/pde_test.cpp.o
 main: CMakeFiles/main.dir/build.make
-main: libioLib.a
 main: libeikonalLib.a
+main: libioLib.a
 main: libpdeLib.a
 main: /usr/local/lib/libopencv_stitching.so.3.2.0
 main: /usr/local/lib/libopencv_superres.so.3.2.0
@@ -136,6 +136,8 @@ main: /usr/local/lib/libopencv_videoio.so.3.2.0
 main: /usr/local/lib/libopencv_imgcodecs.so.3.2.0
 main: /usr/local/lib/libopencv_imgproc.so.3.2.0
 main: /usr/local/lib/libopencv_core.so.3.2.0
+main: /usr/lib/gcc/x86_64-linux-gnu/7/libgomp.so
+main: /usr/lib/x86_64-linux-gnu/libpthread.so
 main: CMakeFiles/main.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/czhou/Projects/InvEHL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)

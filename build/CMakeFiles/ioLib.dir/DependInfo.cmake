@@ -11,8 +11,8 @@ set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/usr/include/eigen3"
   "../src"
+  "/usr/include/eigen3"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/czhou/Projects/InvEHL/src/io/iniReader.cpp" "/home/czhou/Projects/InvEHL/build/CMakeFiles/ioLib.dir/src/io/iniReader.cpp.o"
@@ -23,8 +23,8 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/include/eigen3"
   "../src"
+  "/usr/include/eigen3"
   )
 
 # Targets to which this target links.

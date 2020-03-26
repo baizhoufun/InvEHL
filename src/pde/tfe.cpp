@@ -1,5 +1,9 @@
-#include "tfe.hpp"
+#include "pde/function.hpp"
+#include "io/ioEigen.hpp"
+#include "io/utilities.hpp"
+#include "pde/tfe.hpp"
 #include <iostream>
+
 namespace invEHL
 {
 namespace pde
@@ -32,6 +36,25 @@ void TFE::resetData()
     //F.setZero(fem.info.dof);
     one_.setOnes(dof);
 }
+
+void TFE::setParam()
+{
+    mesh.info.lx = iniReader.GetReal("mesh", "lx");
+    mesh.info.ly = iniReader.GetReal("mesh", "ly");
+    mesh.info.nx = iniReader.GetInteger("mesh", "nx");
+    mesh.info.ny = iniReader.GetInteger("mesh", "ny"),
+    param.dt = iniReader.GetReal("pde", "dt");
+    param.tStep = iniReader.GetInteger("pde", "tStep");
+    param.h0 = iniReader.GetReal("pde", "h0");
+    param.bdf = iniReader.GetInteger("pde", "bdf");
+    param.maxNewtonIter = iniReader.GetInteger("pde", "maxNewtonIter");
+    param.rootDir = iniReader.GetString("pde", "rootDir");
+    param.tolFRes = iniReader.GetReal("pde", "tolFRes");
+    param.tolAdjointSolver = iniReader.GetReal("pde", "tolAdjointSolver");
+    param.tolStateSolver = iniReader.GetReal("pde", "tolStateSolver");
+    param.tolStateError = iniReader.GetReal("pde", "tolStateError");
+}
+
 void TFE::initialization(const std::string &iniFIleName)
 {
     iniReader.Read(iniFIleName);
@@ -40,31 +63,22 @@ void TFE::initialization(const std::string &iniFIleName)
         std::cout << "Can't load.\n";
         return;
     }
-
-    mesh.info.lx = iniReader.GetReal("mesh", "lx");
-    mesh.info.ly = iniReader.GetReal("mesh", "ly");
-    mesh.info.nx = iniReader.GetInteger("mesh", "nx");
-    mesh.info.ny = iniReader.GetInteger("mesh", "ny"),
-    param.dt = iniReader.GetReal("pde", "dt");
-    param.tStep = iniReader.GetInteger("pde", "tStep");
-    param.bdf = iniReader.GetInteger("pde", "bdf");
-    param.rootDir = iniReader.GetString("pde", "rootDir");
-    param.tolFRes = iniReader.GetReal("pde", "tolFRes");
-    param.tolAdjointSolver = iniReader.GetReal("pde", "tolAdjointSolver");
-    param.tolStateSolver = iniReader.GetReal("pde", "tolStateSolver");
+    setParam();
 
     mesh.initNode();
     mesh.initElement();
     mesh.assembleMass();
     mesh.assembleStiff();
     mesh.outputMesh(iniReader.GetString("mesh", "outputElement"), iniReader.GetString("mesh", "outputNode"));
+
     resetData();
+    mesh.allocSparseStiff(W_);
+    mesh.allocSparseStiff(WLap_);
 
     cv::Mat img = cv::imread(iniReader.GetString("mask", "inputMask"));
     cv::resize(img, img, cv::Size(mesh.info.nx * 2 + 1, mesh.info.ny * 2 + 1));
     //image::Eikonal ls(img, false, image::Eikonal::Flag::INITIAL_ORIGINAL);
     //ls.rescaleMinMax();
-
     io::IOEigen::img2Mat(img, data.control());
 }
 
@@ -98,7 +112,7 @@ void TFE::setFunction(const char *filename, Eigen::VectorXd &f, double f0)
     Eigen::MatrixXd tt = io::IOEigen::readMatrix(filename, 5 * dof);
     while (tt.rows() != dof)
     {
-        printf("Input DOF (%d) and Mesh DOF (%d) do not match! Press enter to reload ...", tt.rows(), dof);
+        printf("Input DOF (%d) and Mesh DOF (%d) do not match! Press enter to reload ...", static_cast<int>(tt.rows()), dof);
         std::cin.get();
         tt.resize(0, 0);
         tt = io::IOEigen::readMatrix(filename, 5 * dof);
@@ -118,55 +132,90 @@ void TFE::setFunction(const char *filename, Eigen::VectorXd &f, double f0)
     }
 };
 
-void TFE::BDF(const Eigen::VectorXd &h0, const Eigen::VectorXd &h1, double dt0, double dt1, Eigen::VectorXd &h2, Flag flag)
+int TFE::BDF(const Eigen::VectorXd &h0, const Eigen::VectorXd &h1, Eigen::VectorXd &h2, double dt0, double dt1, int bdfOrder, Flag flag)
 {
     const Eigen::VectorXd &f = data.control();
-    Eigen::BiCGSTAB<Eigen::SparseMatrix<double, Eigen::RowMajor>> sol;
-    double F_res = 1;
-    int maxIter = 15;
     const int &dof = mesh.info.dof;
-    const double &tolStateSolver = param.tolStateSolver;
     const double &tolFRes = param.tolFRes;
+    const double &tolStateSolver = param.tolStateSolver;
+    const double &tolStateError = param.tolStateError;
+    const int &maxNewtonIter = param.maxNewtonIter;
 
-    W.setZero();
-    mesh.assembleWeightedStiff(W, Function::ehd(Function::h3, h1));
-    Eigen::SparseMatrix<double> dPI(dof, dof);
-    dPI.setIdentity();
-    Eigen::SparseMatrix<double> tmp(dof, dof);
-    tmp = W * mesh.lumpedLaplaceMatrix;
+    W_.setZero();
+    mesh.assembleWeightedStiff(W_, Function::ehd(Function::h3, h1));
+    WLap_.setZero();
+    WLap_ = W_ * mesh.lumpedLaplaceMatrix;
 
-    h2 = h1;
-    dPI.diagonal() = Function::ehd(Function::dPIdh, h1, f);
+    h2 = h1 + (h1 - h0) / dt0 * dt1;
+    //h2 = h1;
     Eigen::VectorXd hBDF(h1.size());
-    bdf(1, alpha, h0, h1, hBDF);
+    bdf(bdfOrder, alpha, dt1 / dt0);
+    hBDF = alpha[1] * h1 + alpha[0] * h0;
 
-    J = mesh.lumpedMassMatrix - dt0 * alpha[2] * (tmp + W * dPI);
-    sol.compute(-J);
+    Eigen::BiCGSTAB<Eigen::SparseMatrix<double, Eigen::RowMajor>> sol;
     sol.setTolerance(tolStateSolver);
+
+    JNewton(dt1 * alpha[2], h2, J_);
+    sol.compute(-J_);
     int iter = 0;
 
-    // nonlinear equation (3.44) that we need to solve
-    F = mesh.lumpedMassMatrix * (h2 - hBDF) - dt1 * alpha[2] * (tmp * h2 + W * Function::ehd(Function::PI, h2, f));
-    F_res = F.cwiseAbs().maxCoeff();
-    while (F_res > tolFRes && iter < maxIter)
+    double F_res = FNewton(dt1 * alpha[2], hBDF, h2, F_);
+    Eigen::VectorXd error(h2.size());
+    while (iter < maxNewtonIter)
     {
         iter++;
-        h2 += sol.solve(F);
+        //io::Utilities::tic();
+        JNewton(dt1 * alpha[2], h2, J_);
+        sol.compute(-J_);
+        error = sol.solve(F_);
+        //io::Utilities::toc(true);
+        h2 += error;
+
         if (sol.info() != Eigen::Success)
         {
             printf("State solver failure ...\n");
-            //breakAlarm = true;
+            break;
         }
-        F = mesh.lumpedMassMatrix * (h2 - hBDF) - dt1 * alpha[2] * (tmp * h2 + W * Function::ehd(Function::PI, h2, f));
-        F_res = F.cwiseAbs().maxCoeff();
+        //std::cout << "Newton iter = " << iter << " error = " << error.cwiseAbs().maxCoeff() << std::endl;
+        if (error.cwiseAbs().maxCoeff() < tolStateError && F_res < tolFRes)
+        {
+            break;
+        }
+
+        F_res = FNewton(dt1 * alpha[2], hBDF, h2, F_);
     }
+
     if (flag == Flag::BDFINFO_ON)
-    {
-        std::cout << "BDF nonlinear iter step = " << iter << std::endl;
-    }
+        std::cout << "| Newton " << iter << " | err = " << error.cwiseAbs().maxCoeff() << " | FRes = " << F_res << std::endl;
+
+    if (iter < maxNewtonIter)
+        return 0;
+    else
+        return 1;
 }
 
-void TFE::bdf(int o, double *alpha)
+double TFE::JNewton(double gamma, const Eigen::VectorXd &h2, Eigen::SparseMatrix<double, Eigen::RowMajor> &J)
+{
+    const Eigen::VectorXd &f = data.control();
+    const Eigen::SparseMatrix<double> &W = W_;
+    const Eigen::SparseMatrix<double> &WLap = WLap_;
+    Eigen::SparseMatrix<double> dPI(f.size(), f.size());
+    dPI.setIdentity();
+    dPI.diagonal() = Function::ehd(Function::dPIdh, h2, f);
+    J_ = mesh.lumpedMassMatrix - gamma * (WLap + W * dPI);
+}
+
+double TFE::FNewton(double gamma, const Eigen::VectorXd &hBDF, const Eigen::VectorXd &h2, Eigen::VectorXd &F)
+{
+
+    const Eigen::VectorXd &f = data.control();
+    const Eigen::SparseMatrix<double> &W = W_;
+    const Eigen::SparseMatrix<double> &WLap = WLap_;
+    F = mesh.lumpedMassMatrix * (h2 - hBDF) - gamma * (WLap * h2 + W * Function::ehd(Function::PI, h2, f));
+    return F.cwiseAbs().maxCoeff();
+};
+
+void TFE::bdf(int o, double *alpha, double delta1)
 {
     switch (o)
     {
@@ -175,15 +224,13 @@ void TFE::bdf(int o, double *alpha)
         alpha[2] = 1.0;
         alpha[1] = 1.0;
         alpha[0] = 0;
-        //hBDF = h_0;
         break;
     }
     case 2:
     {
-        alpha[2] = 2. / 3.;
-        alpha[1] = 4. / 3.;
-        alpha[0] = -1. / 3.;
-        //hBDF = a_zero * h1 + a_minus * h0;
+        alpha[2] = (1. + delta1) / (1. + 2.0 * delta1);
+        alpha[1] = (1. + delta1) * (1. + delta1) / (1. + 2.0 * delta1);
+        alpha[0] = -delta1 * delta1 / (1. + 2.0 * delta1);
         break;
     }
     default:

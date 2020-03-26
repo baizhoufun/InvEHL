@@ -14,6 +14,8 @@ eigen3/Eigen/Core
 string
 -
 
+../src/io/utilities.hpp
+
 /home/czhou/Projects/InvEHL/src/io/ini.h
 stdio.h
 -
@@ -41,18 +43,16 @@ eigen3/Eigen/Core
 -
 fstream
 -
-io/ioEigen.hpp
-/home/czhou/Projects/InvEHL/src/io/io/ioEigen.hpp
 omp.h
 -
+io/ioEigen.hpp
+/home/czhou/Projects/InvEHL/src/io/io/ioEigen.hpp
 
 /home/czhou/Projects/InvEHL/src/io/utilities.cpp
-utilities.hpp
-/home/czhou/Projects/InvEHL/src/io/utilities.hpp
+io/utilities.hpp
+/home/czhou/Projects/InvEHL/src/io/io/utilities.hpp
 iostream
 -
 omp.h
 -
-
-/home/czhou/Projects/InvEHL/src/io/utilities.hpp
 

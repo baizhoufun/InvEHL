@@ -63,7 +63,6 @@ void Eikonal::initializePhi(cv::Mat inputImg, cv::Rect inputPhi, Flag flag)
                 case Flag::INITIAL_BINARY:
                 {
                     if ((int)img.at<uchar>(i, j) <= 130)
-                        //phi.at<float>(i, j) = img.at<uchar>(i, j) / 255.;
                         phiInit_.at<float>(i, j) = phiIn;
                     else
                         phiInit_.at<float>(i, j) = phiOut;

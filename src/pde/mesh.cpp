@@ -152,6 +152,11 @@ void Mesh::assembleStiff()
 	lumpedLaplaceMatrix.reserve(Eigen::VectorXi::Constant((int)node.size(), 25));
 	lumpedLaplaceMatrix = -inverseMassMatrix * stiffnessMatrix; // laplace matrix = -1 * mass^-1 * stiff matrix
 };
+void Mesh::allocSparseStiff(Eigen::SparseMatrix<double> &mat) const
+{
+	mat.resize(info.dof, info.dof);
+	mat.reserve(Eigen::VectorXi::Constant(info.dof, 25));
+};
 
 void Mesh::assembleWeightedStiff(Eigen::SparseMatrix<double> &matrix, const Eigen::VectorXd &h)
 {

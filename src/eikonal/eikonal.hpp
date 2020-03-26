@@ -22,7 +22,7 @@ public:
     void initializePhi(cv::Mat inputImg, cv::Rect inputPhi, Flag flag = Flag::INITIAL_BINARY);
     void rescaleMinMax(float phiMin = 0.0f, float phiMax = 1.0f)
     {
-        cv::normalize(phi, phi, phiMax, phiMin, cv::NORM_MINMAX);
+        cv::normalize(phi, phi, phiMin, phiMax, cv::NORM_MINMAX);
     };
     void displayPhi()
     {
