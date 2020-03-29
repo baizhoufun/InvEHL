@@ -98,8 +98,7 @@ void IOEigen::write(const std::string &fileName, const std::vector<Eigen::Vector
         dataLength /= 10;
     } while (dataLength);
 
-#pragma omp parallel for num_threads(4) std::cout << data.control().maxCoeff();
-    std::cout << data.control().minCoeff();
+#pragma omp parallel for num_threads(4)
     for (int i = 0; i < fContainer.size(); i += k)
     {
         int number_of_zeros = number_of_digits - std::to_string(i).length();

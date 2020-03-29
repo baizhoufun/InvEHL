@@ -48,7 +48,7 @@ public:
 
 	void initialization(const std::string &iniFIleName);
 	void resetData();
-	void setFunction(double (*fp)(double x, double y), Eigen::VectorXd &f, double f0 = -1.) const;
+	//void setFunction(const double (*fp)(double x, double y), Eigen::VectorXd &f, double f0 = -1.) const;
 	void setFunction(Eigen::VectorXd &f, double f0) const;
 	void setFunction(const char *filename, Eigen::VectorXd &f, double f0 = -1.);
 	void rescale(double zScale, double zAvg, Eigen::VectorXd &h0) const;
@@ -56,6 +56,9 @@ public:
 	double FNewton(double gamma, const Eigen::VectorXd &hBDF, const Eigen::VectorXd &h2, Eigen::VectorXd &F);
 	double JNewton(double gamma, const Eigen::VectorXd &h1, Eigen::SparseMatrix<double, Eigen::RowMajor> &J);
 	const Eigen::VectorXd &one() const { return one_; }
+
+	// ================= DATA MEMBERS ================== //
+	//virtual double fAnalytic(double x, double y) = 0;
 
 	// ================= DATA MEMBERS ================== //
 

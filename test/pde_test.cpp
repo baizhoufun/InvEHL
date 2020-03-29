@@ -2,14 +2,26 @@
 #include <eigen3/Eigen/Core>
 #include <thread>
 
-//#include "eikonal/eikonal.hpp"
-//#include "io/iniReader.hpp"
 #include "io/ioEigen.hpp"
 #include "io/utilities.hpp"
-//#include "pde/mesh.hpp"
 #include "pde/tfe.hpp"
 
 using namespace cv;
+
+class ehl : public invEHL::pde::TFE
+{
+public:
+    explicit ehl(const std::string &iniFIleName) : invEHL::pde::TFE(iniFIleName) {}
+    static double setMaskFunc(void *context, double x, double y) { return static_cast<ehl *>(context)->maskFunc(x, y); }
+
+private:
+    double maskFunc(double x, double y)
+    {
+        double kx = 2.0 * M_PI / mesh.info.lx;
+        double ky = 2.0 * M_PI / mesh.info.ly;
+        return 0.3 * cos(kx * x);
+    };
+};
 
 int main(int argc, char **argv)
 {
@@ -27,8 +39,12 @@ int main(int argc, char **argv)
 
     //invEHL::io::Utilities::waterMark();
 
-    invEHL::pde::TFE tfe(confPath);
+    //invEHL::pde::TFE tfe(confPath);
+    ehl tfe(confPath);
     tfe.rescale(0.5, 0.0, tfe.data.control());
+
+    tfe.mesh.initVector(ehl::setMaskFunc, &tfe, tfe.data.control());
+
     invEHL::io::IOEigen::write("../resources/control.txt", tfe.data.control());
     tfe.setFunction(tfe.data.state()[0], 0.15);
 

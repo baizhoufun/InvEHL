@@ -92,17 +92,17 @@ void TFE::rescale(double zScale, double zAvg, Eigen::VectorXd &f) const
     std::cout << "now Avg: " << one().dot(mesh.lumpedMassMatrix * f) / mesh.oneMassOne()
               << " min " << f.minCoeff() << " max " << f.maxCoeff() << "\n";
 };
-void TFE::setFunction(double (*fp)(double x, double y), Eigen::VectorXd &f, double f0) const
-{
-    mesh.initVector(fp, f);
-    if (f0 > -0.5)
-    {
-        double favg = one().dot(mesh.lumpedMassMatrix * f) / mesh.oneMassOne();
-        f = f + (f0 - favg) * one();
-        std::cout << "Analytic input loaded; avg from " << favg << " to "
-                  << one().dot(mesh.lumpedMassMatrix * f) / mesh.oneMassOne() << " !\n";
-    }
-};
+// void TFE::setFunction(const double (*fp)(double x, double y), Eigen::VectorXd &f, double f0) const
+// {
+//     mesh.initVector(fp, f);
+//     if (f0 > -0.5)
+//     {
+//         double favg = one().dot(mesh.lumpedMassMatrix * f) / mesh.oneMassOne();
+//         f = f + (f0 - favg) * one();
+//         std::cout << "Analytic input loaded; avg from " << favg << " to "
+//                   << one().dot(mesh.lumpedMassMatrix * f) / mesh.oneMassOne() << " !\n";
+//     }
+// };
 
 void TFE::setFunction(Eigen::VectorXd &f, double f0) const { f.setConstant(f0); };
 

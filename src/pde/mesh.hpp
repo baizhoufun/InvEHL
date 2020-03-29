@@ -2,6 +2,7 @@
 #define MESH_H
 #include <vector>
 #include <eigen3/Eigen/Sparse>
+//#include "pde/tfe.hpp"
 
 namespace invEHL
 {
@@ -50,7 +51,9 @@ public:
 	// write mesh to a path
 	void outputMesh(const std::string &elementPath, const std::string &nodePath) const;
 	// ehd function : evaluate function fp which depends on function f and function h, e.g. Pi = 1/ (1+f-h)
-	void initVector(double (*fp)(double x, double y), Eigen::VectorXd &h) const;
+	void initVector(double (*fp)(void *, double, double), void *context, Eigen::VectorXd &h) const;
+	//void initVector(const std::function<double(double, double)> &fp, Eigen::VectorXd &h) const;
+
 	void allocSparseStiff(Eigen::SparseMatrix<double> &W) const;
 
 private:

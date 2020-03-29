@@ -27,11 +27,11 @@ namespace invEHL
 {
 namespace pde
 {
-void Mesh::initVector(double (*fp)(double x, double y), Eigen::VectorXd &h) const
+void Mesh::initVector(double (*fp)(void *, double, double), void *context, Eigen::VectorXd &h) const
 {
 	for (size_t i = 0; i < node.size(); i++)
 	{
-		h(i) = (*fp)(node[i][0], node[i][1]);
+		h(i) = (*fp)(context, node[i][0], node[i][1]);
 	}
 };
 
