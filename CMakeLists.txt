@@ -63,8 +63,7 @@ ${SRC}/io/ini.c
 ${SRC}/io/ioEigen.cpp
 ${SRC}/io/utilities.cpp)
 
-add_library(ioLib1
-${SRC}/io/utilities.cpp)
+
 
 find_package(OpenCV REQUIRED)
 add_library(eikonalLib ${SRC}/eikonal/eikonal.cpp)

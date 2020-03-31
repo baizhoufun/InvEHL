@@ -88,6 +88,17 @@ void IOEigen::mat2Img(const Eigen::VectorXd &b, int row, int col, float aspectRa
     cv::waitKey(10);
 };
 
+const Eigen::VectorXd IOEigen::std2Eigenvec(const std::vector<double> &b)
+{
+    Eigen::VectorXd tmp;
+    tmp.resize(b.size());
+    tmp.setZero();
+    for (size_t i = 0; i < b.size(); i++)
+        tmp(i) = b[i];
+
+    return tmp;
+}
+
 void IOEigen::write(const std::string &fileName, const std::vector<Eigen::VectorXd> &fContainer, int k)
 {
     int dataLength = fContainer.size();

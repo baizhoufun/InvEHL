@@ -13,13 +13,23 @@ void TFE::resetData()
     const int &tStep = param.tStep;
     const int &dof = mesh.info.dof;
 
-    data.time().setZero(tStep);
+    // allocal time = 0
+    data.time().resize(1);
+    data.time().reserve(tStep);
+    // allocal state at time = 0
+    data.state().resize(1);
+    data.state().reserve(tStep);
+    //for (auto &it : data.state())
+    //{
+    //it.setZero(dof);
+    //}
 
-    data.state().resize(tStep);
-    for (auto &it : data.state())
-    {
-        it.setZero(dof);
-    }
+    // allocate control / target / gradient/
+    data.control().setZero(dof);
+    data.target().setZero(dof);
+    data.rawGradient().setZero(dof);
+    one_.setOnes(dof);
+    // adjoint and constraint
     data.adjoint().resize(tStep);
     for (auto &it : data.adjoint())
     {
@@ -30,11 +40,8 @@ void TFE::resetData()
     {
         it.setZero(dof);
     }
-    data.control().setZero(dof);
-    data.target().setZero(dof);
-    data.rawGradient().setZero(dof);
+
     //F.setZero(fem.info.dof);
-    one_.setOnes(dof);
 }
 
 void TFE::setParam()
@@ -44,6 +51,7 @@ void TFE::setParam()
     mesh.info.nx = iniReader.GetInteger("mesh", "nx");
     mesh.info.ny = iniReader.GetInteger("mesh", "ny"),
     param.dt = iniReader.GetReal("pde", "dt");
+    param.tMax = iniReader.GetReal("pde", "tMax");
     param.tStep = iniReader.GetInteger("pde", "tStep");
     param.h0 = iniReader.GetReal("pde", "h0");
     param.bdf = iniReader.GetInteger("pde", "bdf");
@@ -104,7 +112,11 @@ void TFE::rescale(double zScale, double zAvg, Eigen::VectorXd &f) const
 //     }
 // };
 
-void TFE::setFunction(Eigen::VectorXd &f, double f0) const { f.setConstant(f0); };
+void TFE::setFunction(Eigen::VectorXd &f, double f0) const
+{
+    f.setZero(mesh.info.dof);
+    f.setConstant(f0);
+};
 
 void TFE::setFunction(const char *filename, Eigen::VectorXd &f, double f0)
 {
@@ -131,6 +143,47 @@ void TFE::setFunction(const char *filename, Eigen::VectorXd &f, double f0)
         std::cout << "User input loaded and unmodified ! \n";
     }
 };
+void TFE::postProcess(const std::string &fileName) const
+{
+    std::cout << "abc";
+    Eigen::size_t dataSize = data.time().size();
+    Eigen::MatrixXd output(dataSize, 4);
+    output.setZero();
+    Eigen::VectorXd tmp = Eigen::VectorXd::Zero(mesh.info.dof);
+
+    for (int k = 0; k < dataSize; k++)
+    {
+
+        tmp.setZero();
+        const Eigen::VectorXd &hk = data.state()[k];
+        tmp = Function::ehd(Function::intPIdh, hk, data.control());
+        output(k, 0) = data.time()[k];
+        output(k, 1) = 0.5 * hk.dot(mesh.stiffnessMatrix * hk) - one().dot(mesh.lumpedMassMatrix * tmp);
+        output(k, 2) = hk.maxCoeff();
+        output(k, 3) = hk.minCoeff();
+    }
+    io::IOEigen::write(fileName, output);
+}
+
+// const Eigen::VectorXd TFE::computeEnergy() const
+// {
+//     Eigen::MatrixXd freeEnergy(data.state()[0].size(), 4);
+//     freeEnergy.setZero();
+//     Eigen::VectorXd ee;
+//     ee.setZero(fem.info.dof);
+//     for (int k = 0; k < state.size(); k++)
+//     {
+//         ee.setZero();
+//         const Eigen::VectorXd &hk = state[k];
+//         ee = Mesh::ehd(intPIdh, hk, control);
+//         freeEnergy(k, 3) = timeStamp[k];
+//         freeEnergy(k, 0) = 0.5 * hk.dot(fem.stiffnessMatrix * hk) - one.dot(fem.lumpedMassMatrix * ee);
+//         freeEnergy(k, 1) = hk.maxCoeff();
+//         freeEnergy(k, 2) = hk.minCoeff();
+//     }
+//     printf("Computing free energy for the current mask ...\n");
+//     return freeEnergy;
+//}
 
 int TFE::BDF(const Eigen::VectorXd &h0, const Eigen::VectorXd &h1, Eigen::VectorXd &h2, double dt0, double dt1, int bdfOrder, Flag flag)
 {
@@ -638,26 +691,6 @@ void TFE::bdf(int o, double *alpha, const Eigen::VectorXd &h0, const Eigen::Vect
 // {
 // 	const Eigen::VectorXd hDiff = state[state.size() - 1] - target;
 // 	return 0.5 * hDiff.dot(fem.lumpedMassMatrix * hDiff) + c0 * 0.5 * control.dot(fem.stiffnessMatrix * control);
-// };
-
-// Eigen::MatrixXd thinFilm::computeFreeEnergy()
-// {
-// 	Eigen::MatrixXd freeEnergy(state.size(), 4);
-// 	freeEnergy.setZero();
-// 	Eigen::VectorXd ee;
-// 	ee.setZero(fem.info.dof);
-// 	for (int k = 0; k < state.size(); k++)
-// 	{
-// 		ee.setZero();
-// 		const Eigen::VectorXd &hk = state[k];
-// 		ee = Mesh::ehd(intPIdh, hk, control);
-// 		freeEnergy(k, 3) = timeStamp[k];
-// 		freeEnergy(k, 0) = 0.5 * hk.dot(fem.stiffnessMatrix * hk) - one.dot(fem.lumpedMassMatrix * ee);
-// 		freeEnergy(k, 1) = hk.maxCoeff();
-// 		freeEnergy(k, 2) = hk.minCoeff();
-// 	}
-// 	printf("Computing free energy for the current mask ...\n");
-// 	return freeEnergy;
 // };
 
 } // namespace pde

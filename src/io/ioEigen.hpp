@@ -25,6 +25,7 @@ public:
 
     static void img2Mat(const cv::Mat &img, Eigen::VectorXd &b);
     static void mat2Img(const Eigen::VectorXd &b, int col, int row, float aspectRatio, float bmin = 0, float bmax = 1);
+    static const Eigen::VectorXd std2Eigenvec(const std::vector<double> &b);
 };
 } // namespace io
 } // namespace invEHL

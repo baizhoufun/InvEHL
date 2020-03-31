@@ -53,9 +53,9 @@ public:
 	void setFunction(const char *filename, Eigen::VectorXd &f, double f0 = -1.);
 	void rescale(double zScale, double zAvg, Eigen::VectorXd &h0) const;
 	int BDF(const Eigen::VectorXd &h0, const Eigen::VectorXd &h1, Eigen::VectorXd &h2, double dt0, double dt1, int bdfOrder, Flag flag = Flag::BDFINFO_OFF);
-	double FNewton(double gamma, const Eigen::VectorXd &hBDF, const Eigen::VectorXd &h2, Eigen::VectorXd &F);
-	double JNewton(double gamma, const Eigen::VectorXd &h1, Eigen::SparseMatrix<double, Eigen::RowMajor> &J);
+
 	const Eigen::VectorXd &one() const { return one_; }
+	void postProcess(const std::string &fileName) const;
 
 	// ================= DATA MEMBERS ================== //
 	//virtual double fAnalytic(double x, double y) = 0;
@@ -101,6 +101,8 @@ private:
 	//static void bdf(int o, double *alpha);
 	static void bdf(int o, double *alpha, double delta1 = 1.0);
 	static void bdf(int o, double *alpha, const Eigen::VectorXd &h0, const Eigen::VectorXd &h1, Eigen::VectorXd &hBDF);
+	double FNewton(double gamma, const Eigen::VectorXd &hBDF, const Eigen::VectorXd &h2, Eigen::VectorXd &F);
+	double JNewton(double gamma, const Eigen::VectorXd &h1, Eigen::SparseMatrix<double, Eigen::RowMajor> &J);
 };
 } // namespace pde
 } // namespace invEHL
